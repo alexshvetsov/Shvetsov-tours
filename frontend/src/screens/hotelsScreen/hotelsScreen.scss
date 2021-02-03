@@ -1,0 +1,98 @@
+@import "../../sass/variables.scss";
+
+
+.hotels-screen{
+    margin: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; 
+}
+.hotel-card{
+    border-radius: 1rem;
+    position: relative;
+    background-image:linear-gradient(
+        to right bottom 
+        ,rgba($--color-primary-light,.9),
+        rgba($--color-primary-dark,.9)) 
+    ,url("./hotel1.jpg");
+    background-size: cover;
+    overflow: hidden;
+    border: 1px solid black; 
+    padding: 3rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    margin: 2rem;
+
+    &__heading{
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+  
+    &__description{
+        list-style-type: none !important;
+        text-align: center;
+        &-item{
+            margin-bottom: 8px;
+            &:after{
+                content: ""; 
+                display: block; 
+                width: 70%;
+                margin:0 15%;
+                border-bottom: 1px solid black; 
+                transition: .5s; 
+
+            }
+        }
+    }
+        &__invisable, &__visable{
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            transition: all .2s;
+    
+        }
+
+        &__invisable{
+            text-align: center;
+            position: absolute;
+            height: 100%;
+            top:100%;
+            left:0;
+            background-image:url("./hotel1.jpg");
+            background-size: cover;
+            z-index: 12;
+            transition: all .2s;
+
+            &-btn{
+            background-color: $--color-grey-dark-3;
+            text-transform: uppercase;
+            margin-top: 90%; 
+            padding:1rem 2rem;
+            border-radius: 6rem;
+            outline: none;
+            border: none;
+            box-shadow: $--shadow-dark;
+            &:hover{
+                transform: translateY(-5px);
+            }
+            &:active{
+                transform: translateY(5px);
+            }
+            }
+            }
+            
+            &:hover &__invisable{
+                top: 0;
+            }
+        }
+
+
+
+
+     
+
+
+  

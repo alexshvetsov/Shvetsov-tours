@@ -1,0 +1,70 @@
+@import "../../sass/variables.scss";
+
+.logo{
+    height: 3.25rem;
+    margin-left: 2rem;
+}
+
+
+.sticky {    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 0 2rem;
+  }
+  
+
+.header {
+  z-index: 12;
+    font-size: 1.4rem;
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: $--line; 
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all .7s;
+
+    @media only screen and (max-width: $bp-smallest) {
+        flex-wrap: wrap;
+        align-content: space-around;
+        height: 11rem;
+    } 
+}
+
+.user-nav{
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    justify-content: space-around;
+    padding-right: 1rem;
+
+    &> *{ 
+        padding: 0 3px;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    } 
+
+    &__login,
+    &__login:link,
+    &__login:visited{
+        color: $--color-primary;
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1.5rem 1rem;
+    }
+    &> *:hover{
+     background-color:$--color-grey-light-2;
+    }
+
+}
+
+
+
+
+
+ 

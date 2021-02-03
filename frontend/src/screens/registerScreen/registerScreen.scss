@@ -1,0 +1,146 @@
+@import "../../sass/variables.scss";
+
+.register-screen{
+    min-width: 100%;
+    min-height: 100%;
+    margin: 8rem 0;
+    transform: translateY(-8rem);
+}
+
+.register-screen{
+    background-image:linear-gradient(
+        to right bottom 
+        ,rgba($--color-primary-light,.3),
+        rgba($--color-primary-dark,.3)) 
+        ,url("../loginScreen/loginBackground.jpg");
+    display: flex;
+    
+} 
+
+.form{
+    margin:auto;
+    padding:2rem 3rem;
+    border-radius: 2rem; 
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;  
+    background-color:rgba($--color-grey-dark-3,.4);
+    font-family: 'Open Sans', sans-serif;
+
+    &__heading{
+        margin: 2rem 3rem;
+        font-weight: bolder;
+        color: $--color-primary;
+        font-size: 3rem;
+    }
+    &__input-area{
+        min-height: 4rem;
+        margin: 2rem 3rem;
+        position: relative;
+        display: flex;
+        background-color: #fff;
+        padding-left:1rem;         
+        background-color:rgba($--color-grey-dark-3,.9);
+        border-radius: 3rem;
+        margin-right: 4rem;
+        width: 80%;
+        
+    }
+    &__icon-span{ 
+        justify-self: flex-end;
+        flex:0 0 15%;
+        background-color: $--color-primary-light;
+        display: flex;
+        
+    }
+    &__icon{
+        margin: auto;
+        
+    }
+    
+        
+        &__input{
+            width: 100%;
+            border:none;
+            outline: none; 
+            background-color:transparent;
+        }
+        
+        
+        &__input:focus{
+        border:none;
+        outline: none; 
+    }
+
+    &__buttons{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__btn{
+        border: none;
+        outline: none;
+        margin: 2rem 3rem; 
+        padding: 1rem 2rem;
+        border-radius: 4rem;
+        background-color: $--color-primary-dark;
+        box-shadow: $--shadow-dark;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        text-transform: uppercase;
+        transition: all .2s;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer ;
+    }
+
+
+    &__btn:hover{
+        transform: translateY(-3px);
+        cursor: pointer;
+    }
+
+    &__btn:active{
+        transform: translateY(0);
+        cursor: pointer;
+    }
+}
+
+.btn{
+    & >*{
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        transition: all .2s;
+        box-shadow:$--shadow-dark;
+
+    }
+
+    
+    &__visable{
+         
+    }
+    
+    &__invisible{
+        position: absolute;
+        left: 0;
+        top: -100%;
+        padding: 2rem 0;
+    }
+
+    &:hover &__visable{ 
+        transform: translateY(-200%);
+    }
+
+
+    &:hover &__invisible{  
+        top: 0;  
+        
+    }
+
+   
+}

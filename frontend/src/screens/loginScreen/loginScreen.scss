@@ -1,0 +1,103 @@
+@import "../../sass/variables.scss";
+
+.login-screen{
+    min-width: 100%;
+    min-height: 50rem;
+}
+
+.login-screen{
+    background-image:linear-gradient(
+        to right bottom 
+        ,rgba($--color-primary-light,.3),
+        rgba($--color-primary-dark,.3)) 
+    ,url("./loginBackground.jpg");
+    display: flex;
+}
+
+.form{
+    margin:auto;
+    padding:3rem 5rem;
+    border-radius: 2rem; 
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;  
+    background-color:rgba($--color-grey-dark-3,.4);
+    font-family: 'Open Sans', sans-serif;
+
+    &__heading{
+        margin: 2rem 3rem;
+        font-weight: bolder;
+        color: $--color-primary;
+        font-size: 3rem;
+    }
+    &__input-area{
+        min-height: 4rem;
+        margin: 2rem 3rem;
+        position: relative;
+        display: flex;
+        background-color: #fff;
+        padding-left:1rem;         
+        background-color:rgba($--color-grey-dark-3,.9);
+        border-radius: 3rem;
+        margin-right: 4rem;
+        width: 80%;
+        
+    }
+    &__icon-span{ 
+        justify-self: flex-end;
+        flex:0 0 15%;
+        background-color: $--color-primary-light;
+        display: flex;
+        
+    }
+    &__icon{
+        margin: auto;
+        
+    }
+    
+        
+        &__input{
+            width: 100%;
+            border:none;
+            outline: none; 
+            background-color:transparent;
+        }
+        
+        
+        &__input:focus{
+        border:none;
+        outline: none; 
+    }
+
+    &__buttons{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__btn{
+        border: none;
+        outline: none;
+        margin: 2rem 3rem; 
+        padding: 1rem 2rem;
+        border-radius: 4rem;
+        background-color: $--color-primary-dark;
+        box-shadow: $--shadow-dark;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        transition: all .2s;
+    }
+
+
+    &__btn:hover{
+        transform: translateY(-3px);
+        cursor: pointer;
+    }
+
+    &__btn:active{
+        transform: translateY(-3px);
+        cursor: pointer;
+    }
+}
