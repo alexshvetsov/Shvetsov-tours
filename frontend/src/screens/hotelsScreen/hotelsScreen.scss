@@ -22,20 +22,27 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 1.4rem;
+    font-size: 2rem; 
     margin: 2rem;
+    position: relative;
+
 
     &__heading{
         margin-bottom: 2rem;
         font-size: 2rem;
+        text-align: center;
     }
 
+    &__adress{
+        display: flex;
+        justify-content: space-between;
+    }
   
     &__description{
         list-style-type: none !important;
-        text-align: center;
         &-item{
             margin-bottom: 8px;
+
             &:after{
                 content: ""; 
                 display: block; 
@@ -66,8 +73,46 @@
             z-index: 12;
             transition: all .2s;
 
+            &-map{
+                position: absolute;
+                width: 2rem;
+                margin: 2rem;
+                top: 0; 
+                right: 4rem; 
+                color: rgb(60, 13, 251);
+                transition: all .2s;
+
+                 &:hover{
+                     top:-4px;
+                 }
+                 &:active{
+                    top:-0;
+                }
+            }
+
+
+            &-like{
+                position: absolute;
+                width: 2rem;
+                margin: 2rem;
+                top: 0;
+                right: 0; 
+                color: red;
+                transition: all .2s;
+
+                 &:hover{
+                     top:-4px;
+                 }
+                 &:active{
+                    top:-0;
+                }
+            }
+
             &-btn{
-            background-color: $--color-grey-dark-3;
+            background-color:#ffffff;
+            text-decoration: none;
+            color:  $--color-grey-dark-1;
+            font-size: 1.4rem !important;
             text-transform: uppercase;
             margin-top: 90%; 
             padding:1rem 2rem;
@@ -75,6 +120,7 @@
             outline: none;
             border: none;
             box-shadow: $--shadow-dark;
+            display: inline-block;
             &:hover{
                 transform: translateY(-5px);
             }

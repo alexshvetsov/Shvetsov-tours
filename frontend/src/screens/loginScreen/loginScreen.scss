@@ -6,11 +6,7 @@
 }
 
 .login-screen{
-    background-image:linear-gradient(
-        to right bottom 
-        ,rgba($--color-primary-light,.3),
-        rgba($--color-primary-dark,.3)) 
-    ,url("./loginBackground.jpg");
+
     display: flex;
 }
 
