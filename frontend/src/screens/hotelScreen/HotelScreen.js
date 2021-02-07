@@ -99,7 +99,7 @@ export const HotelScreen = ({ match }) => {
                             <textarea className='hotel-screen__content-form-textarea' />
                         </div>
                         <div className='hotel-screen__content-form-footer'>
-                            <input type='range' min='0' max='5' />
+                            <span>0</span><input type='range' min='0' max='10' /><span>10</span> 
                             <button>submit</button>
                         </div>
                     </form>
@@ -122,6 +122,7 @@ export const HotelScreen = ({ match }) => {
                       <button class="hotel-screen__content-left-btn-inline">Show all <span>&rarr;</span></button>
                 </div>
             </div>
+            
         </div>
     )
 }

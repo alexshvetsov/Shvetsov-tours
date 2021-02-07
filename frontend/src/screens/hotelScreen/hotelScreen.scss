@@ -203,9 +203,10 @@
                 padding: 0 2rem;
                 display: flex;
                 & > input {
-                    margin-right: auto;
+                    margin: 0 .5rem;
                 }
                 & > button {
+                    margin-left: auto;
                     padding: 0.5rem 1rem;
                     background-color: $--color-grey-dark-2;
                     border-radius: 3rem;

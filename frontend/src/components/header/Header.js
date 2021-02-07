@@ -33,7 +33,7 @@ const Header = () => {
 
     return (
         <header className={`header ${ header}`} ref={myRef}>
-            <img src='/images/logo.png' alt="trillo logo" className="logo" />
+            <img src='/images/stours.jpg' alt="trillo logo" className="logo" />
             <SearchBox />
             <nav className="user-nav">
 

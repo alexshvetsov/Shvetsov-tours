@@ -18,13 +18,13 @@ const Sidebar = () => {
                 <li className={`side-nav__item ${activeLink==='home2'?'side-nav__item--active':''}`}>
                     <NavLink to="/login" className="side-nav__link" onClick={()=>setActiveLink('home2')}>
 
-                        <span>Flight</span>
+                        <span>Followed</span>
                     </NavLink>
                 </li>
                 <li className={`side-nav__item ${activeLink==='home3'?'side-nav__item--active':''}`}>
                     <NavLink to="/login" className="side-nav__link" onClick={()=>setActiveLink('home3')}>
 
-                        <span>Car rental</span>
+                        <span>become a seller</span>
                     </NavLink>
                 </li>
                 <li className={`side-nav__item ${activeLink==='home4'?'side-nav__item--active':''}`}>
