@@ -1,23 +1,24 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './loginScreen.scss'
 
 const LoginScreen = ({history}) => {
 
-
+const [email,setEmail]=useState('')
+const [password,setPassword]=useState('')
 
     return (
         <div className='login-screen'>
             <form className='form'>
                 <h2 className='form__heading'>Login</h2>
                 <div className='form__input-area'>
-                    <input className='form__input' type='email' placeholder='Email' />
+                    <input onChange={(e)=>setEmail(e.target.value)}  value={email} className='form__input' type='email' placeholder='Email' />
                     <span className='form__icon-span'>
                         <i className='fas fa-user form__icon'></i>
                     </span>
                 </div>
 
                 <div className='form__input-area'>
-                    <input className='form__input' type='passowrd' placeholder='Email' />
+                    <input onChange={(e)=>setPassword(e.target.value)} value={password} className='form__input' type='passowrd' placeholder='Email' />
                     <span className='form__icon-span'>
                         <i className='fas fa-lock form__icon'></i>
                     </span>

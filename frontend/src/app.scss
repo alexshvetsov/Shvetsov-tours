@@ -1,77 +1,73 @@
 @import "./sass/variables.scss";
 
-
 * {
-    margin: 0;
-    padding: 0; 
+  margin: 0;
+  padding: 0;
 }
 
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit; 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
-  
 
 html {
-    box-sizing: border-box;
-    font-size: 62.5%; 
+  box-sizing: border-box;
+  font-size: 62.5%;
 }
 
-    @media only screen and (max-width: 68.75em) {
-      html {
-        font-size: 50%; } 
+@media only screen and (max-width: 68.75em) {
+  html {
+    font-size: 50%;
+  }
 }
-  
-  body {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    color: $--color-grey-dark-2;
-    background-image: linear-gradient(to right bottom, $--color-primary-light, $--color-primary-dark);
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh; 
-} 
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: $--color-grey-dark-2;
+  background-image: linear-gradient(to right bottom, $--color-primary-light, $--color-primary-dark);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
 .app {
-    max-width: 120rem;
-    margin: 8rem auto;
-    background-color: $--color-grey-light-1;
-    box-shadow: $--shadow-dark;
-    min-height: 50rem; 
-  }
-    @media only screen and (max-width: 75em) {
-      .app {
-        margin: 0;
-        max-width: 100%;
-        width: 100%; } 
-  }
-
-main{
+  max-width: 120rem;
+  margin: 8rem auto;
+  background-color: $--color-grey-light-1;
+  box-shadow: $--shadow-dark;
   min-height: 50rem;
-  display: flex ;
-    @media only screen and (max-width:$bp-medium){  
-      flex-direction: column; 
-
-} 
 }
-  
-.sidebar{
+@media only screen and (max-width: 75em) {
+  .app {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+main {
+  min-height: 50rem;
+  display: flex;
+  @media only screen and (max-width: $bp-medium) {
+    flex-direction: column;
+  }
+}
+
+.sidebar {
   background-color: var(--color-grey-dark-1);
- 
+
   flex: 0 0 18%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 }
 
-.main-area{
- // flex:1 will make the item take all the row
-  flex: 1; 
+.main-area {
+  // flex:1 will make the item take all the row
+  flex: 1;
+  display: flex;
 }
- 
-
 
 

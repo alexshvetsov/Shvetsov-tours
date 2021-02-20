@@ -22,7 +22,7 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li className={`side-nav__item ${activeLink==='home3'?'side-nav__item--active':''}`}>
-                    <NavLink to="/login" className="side-nav__link" onClick={()=>setActiveLink('home3')}>
+                    <NavLink to="/hotels/new" className="side-nav__link" onClick={()=>setActiveLink('home3')}>
 
                         <span>become a seller</span>
                     </NavLink>
