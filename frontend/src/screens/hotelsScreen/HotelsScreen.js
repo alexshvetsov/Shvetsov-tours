@@ -49,7 +49,7 @@ const    hotels = [{
 
 
     return (
-        <div className='hotels-screen' style={{ backgroundImage: `url('/hotel1.jpg')` }}>
+        <div className='hotels-screen' style={{ backgroundImage: `url('./hotel1.jpg')` }}>
             {hotels.map((hotel, index) => <div key={index} className='hotel-card'>
                 <div className='hotel-card__visable'>
 

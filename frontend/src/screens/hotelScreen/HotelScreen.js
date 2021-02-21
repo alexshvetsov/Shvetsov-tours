@@ -47,26 +47,25 @@ export const HotelScreen = ({ match }) => {
 
 
     useEffect(() => {
-        console.log(id);
         id = match.params.id
-    }, [])
+    }, [id])
 
     return (
         <div className='hotel-screen'>
             {hotels[id].images.length === 1 ?
                 <div className='hotel-screen__gallery'>
                     <figure >
-                        <img className='hotel-screen__gallery-photo' src={hotels[id].images[0]} /></figure>
+                        <img alt='image1' className='hotel-screen__gallery-photo' src={hotels[id].images[0]} /></figure>
                 </div> :
                 hotels[id].images.length === 2 ?
                     <div className='hotel-screen__gallery'>
-                        <figure ><img className='hotel-screen__gallery-photo' src={hotels[id].images[0]} /></figure>
-                        <figure ><img className='hotel-screen__gallery-photo' src={hotels[id].images[1]} /></figure>
+                        <figure ><img alt='image1' className='hotel-screen__gallery-photo' src={hotels[id].images[0]} /></figure>
+                        <figure ><img alt='image2' className='hotel-screen__gallery-photo' src={hotels[id].images[1]} /></figure>
                     </div> :
                     <div className='hotel-screen__gallery'>
-                        <figure ><img className='hotel-screen__gallery-photo' src={hotels[id].images[0]} /></figure>
-                        <figure ><img className='hotel-screen__gallery-photo' src={hotels[id].images[1]} /></figure>
-                        <figure ><img className='hotel-screen__gallery-photo' src={hotels[id].images[2]} /></figure>
+                        <figure ><img alt='image1' className='hotel-screen__gallery-photo' src={hotels[id].images[0]} /></figure>
+                        <figure ><img alt='image2' className='hotel-screen__gallery-photo' src={hotels[id].images[1]} /></figure>
+                        <figure ><img alt='image3' className='hotel-screen__gallery-photo' src={hotels[id].images[2]} /></figure>
                     </div>}
 
             <div className="hotel-screen__overview">
