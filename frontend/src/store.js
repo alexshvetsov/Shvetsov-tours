@@ -6,12 +6,13 @@ import {
   userLoginReducer, userRegisterReducer,
 } from './reducers/userReducers.js'
 
+import {hotelCreateReducer} from './reducers/hotelReducers.js'
+
 const reducer = combineReducers({
   
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
- 
-
+  hotelCreate:hotelCreateReducer
 
 })
 
