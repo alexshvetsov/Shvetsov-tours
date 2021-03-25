@@ -1,7 +1,49 @@
-import {HOTEL_CREATE_REQUEST,HOTEL_CREATE_SUCCESS,HOTEL_CREATE_FAIL,HOTEL_CREATE_RESET} from '../constants/hotelConstants.js'
+import {
+    HOTEL_CREATE_REQUEST, HOTEL_CREATE_SUCCESS, HOTEL_CREATE_FAIL, HOTEL_CREATE_RESET,
+    HOTEL_LIST_REQUEST, HOTEL_LIST_SUCCESS, HOTEL_LIST_FAIL,
+    HOTEL_DETAILS_REQUEST,HOTEL_DETAILS_SUCCESS,HOTEL_DETAILS_FAIL,
+    HOTEL_CREATE_REVIEW_REQUEST, HOTEL_CREATE_REVIEW_SUCCESS, HOTEL_CREATE_REVIEW_FAIL,HOTEL_CREATE_REVIEW_RESET
+
+} from '../constants/hotelConstants.js'
+
+
+export const hotelListReducer = (state = { hotels: [] }, action) => {
+
+
+    switch (action.type) {
+        case HOTEL_LIST_REQUEST:
+            return { loading: true, hotels: [] }
+        case HOTEL_LIST_SUCCESS:
+            return {
+                loading: false,
+                hotels: action.payload,
+                pages: action.payload.pages,
+                page: action.payload.page
+            }
+        case HOTEL_LIST_FAIL:
+            return { loading: false, error: action.payload }
+        default:
+            return state;
+    }
+}
+
+export const hotelDetailsReducer = (state = { hotel: { reviews: [],images:[] } }, action) => {
+
+
+    switch (action.type) {
+        case HOTEL_DETAILS_REQUEST:
+            return { loading: true, ...state }
+        case HOTEL_DETAILS_SUCCESS:
+            return { loading: false, hotel: action.payload }
+        case HOTEL_DETAILS_FAIL:
+            return { loading: false, error: action.payload }
+        default:
+            return state;
+    }
+}
+
 
 export const hotelCreateReducer = (state = {}, action) => {
-
 
     switch (action.type) {
         case HOTEL_CREATE_REQUEST:
@@ -11,6 +53,24 @@ export const hotelCreateReducer = (state = {}, action) => {
         case HOTEL_CREATE_FAIL:
             return { loading: false, error: action.payload }
         case HOTEL_CREATE_RESET:
+            return {}
+        default:
+            return state;
+    }
+}
+
+
+export const hotelReviewCreateReducer = (state = {}, action) => {
+
+
+    switch (action.type) {
+        case HOTEL_CREATE_REVIEW_REQUEST:
+            return { loading: true }
+        case HOTEL_CREATE_REVIEW_SUCCESS:
+            return { loading: false, success: true }
+        case HOTEL_CREATE_REVIEW_FAIL:
+            return { loading: false, error: action.payload }
+        case HOTEL_CREATE_REVIEW_RESET:
             return {}
         default:
             return state;

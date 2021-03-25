@@ -9,6 +9,7 @@
     padding: 2rem 4rem;
 
     &__heading {
+        font-size: 8rem;
         align-self: center;
         justify-self: center;
     }
@@ -91,10 +92,33 @@
         transform: translateY(-3px);
         cursor: pointer;
     }
+    &__modal{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: rgba(0,0,0,0.4);
+        display: flex;
+        z-index: 100;
+        &-content{
+            margin: auto;
+            position: relative;
+            
+        }
+    }
 }
+
+
 .textarea {
     padding-top: 1.2rem;
+}
+.hidden{
+    display: none;
 }
 // .short-width{
 //     width: 58%;
 // }
+.error{
+    background-color: salmon;
+}

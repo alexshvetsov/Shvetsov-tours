@@ -1,82 +1,44 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { listHotels } from '../../actions/hotelActions.js';
+import { listFavoriteHotels } from '../../actions/favoriteHotelActions.js';
 import Rating from '../../components/rating/Rating'
+import { NavLink } from 'react-router-dom';
 import './hotelsScreen.scss'
-import {NavLink} from 'react-router-dom';
+import HotelCard from '../../components/hotelCard/HotelCard';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const HotelsScreen = () => {
 
-const    hotels = [{
-         _id:1,
-        name: 'four seasons',
-        images:['/images/1','/images/2','/images/3'],
-        adress: {
-            country: 'USA',
-            city: 'los angels',
-            street: 24,
-        },
-        rating: 3.5,
-        reviews: [{ user: 'adam', review: 'asdads', rating: 4 }],
-        description: ['3 meals a day', 'large indoor pool', 'all day room service'],
-        price: 50
-    }, {
-        _id:2,
-                name: 'four seasons',
-        images:['/images/1'],
-        adress: {
-            country: 'USA',
-            city: 'los angels',
-            street: 24,
-        },
-        rating: 3.5,
-        reviews: [{ user: 'adam', review: 'asdads', rating: 4 }],
-        description: ['3 meals a day', 'large indoor pool', 'all day room service'],
-        price: 50
-    }, {
-        _id:3,
-                name: 'four seasons',
-        images:['/images/1','/images/3'],
-        adress: {
-            country: 'USA',
-            city: 'los angels',
-            street: 24,
-        },
-        rating: 3.5,
-        reviews: [{ user: 'adam', review: 'asdads', rating: 4 }],
-        description: ['3 meals a day', 'large indoor pool', 'all day room service'],
-        price: 50
-    } ]
+export const HotelsScreen = ({match}) => {
+
+    const keyword = match.params.keyword
+    const pageNumber = match.params.pageNumber || 1
+
+    const dispatch = useDispatch()
+
+    const hotelList = useSelector(state => state.hotelList);
+    const { loading, error, hotels } = hotelList
+
+    const favoriteHotelList = useSelector(state => state.favoriteHotelList);
+    const { error:errorFavoriteHotelList, loading:loadingFavoriteHotelList, favoriteHotels } = favoriteHotelList;
+
+
+
+    useEffect(() => {
+        dispatch(listHotels(keyword, pageNumber))
+        dispatch(listFavoriteHotels())
+    }, [dispatch,keyword, pageNumber])
+
 
 
 
     return (
         <div className='hotels-screen' style={{ backgroundImage: `url('./hotel1.jpg')` }}>
-            {hotels.map((hotel, index) => <div key={index} className='hotel-card'>
-                <div className='hotel-card__visable'>
+            {(!loading && !loadingFavoriteHotelList  && hotels.hotels && hotels.hotels.length>0 ) && hotels.hotels.map((hotel, index) => <HotelCard hotel={hotel} 
+            index={index} key={index} id={!errorFavoriteHotelList?favoriteHotels.find(FH => FH.hotel === hotel._id):undefined} />)
 
-                    <h3 className='hotel-card__heading'>{hotel.name}</h3>
-                    <span className='hotel-card__adress'>
-                        <span> {hotel.adress.city}, {hotel.adress.street} , {hotel.adress.country} </span>
-                    </span>
-                    <Rating value={hotel.rating} text={`3 reviews`} />
-                    <ul className='hotel-card__description'>
-                        {hotel.description.map(string =>
-                            <li className='hotel-card__description-item' key={index + string}>
-                                <i class="fas fa-check"></i> {string}</li>)
-                        }
-                    </ul>
-                </div>
-                <div className='hotel-card__invisable'>
-                    <i className='far fa-heart hotel-card__invisable-like'></i>
-                    {/* <i className='fas  fa-heart hotel-card__invisable-like'></i> */}
-                    <i className='fas fa-map-marked-alt hotel-card__invisable-map'></i>
-
-                    <NavLink to={`/hotel/${hotel._id}`} className='hotel-card__invisable-btn'>
-                        details
-                    </NavLink>
-                </div>
-            </div>)
-
-            }
+            } 
+            
+          
         </div>
     )
 }

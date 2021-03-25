@@ -1,8 +1,16 @@
 .rating{
     text-align: center;
+    justify-content: space-around; 
+    display: flex;
+    
+    &__stars{
+        
+        display: flex;
+    }
     
     &__text{
     display: block;
     margin-bottom: 2rem;
+    // margin-left: auto;
 }
 }

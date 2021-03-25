@@ -1,127 +1,124 @@
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { listHotelDetails, createHotelReview } from '../../actions/hotelActions';
+import Modal from '../../components/modal/Modal';
+import { HOTEL_CREATE_REVIEW_RESET } from '../../constants/hotelConstants';
+
 import './hotelScreen.scss'
 
 export const HotelScreen = ({ match }) => {
-    const hotels = [{
-        _id: 1,
-        name: 'four seasons',
-        images: ['/images/hotel-1.jpg', '/images/hotel-2.jpg', '/images/hotel-3.jpg'],
-        adress: {
-            country: 'USA',
-            city: 'los angels',
-            street: 24,
-        },
-        rating: 3.5,
-        reviews: [{ date: new Date(), user: 'tony albertini', review: 'i will comeback again somtinme. amazing place i cant belive i was there', rating: 4 },
-        { date: new Date(), user: 'adam smith', review: 'shitty place no parking and the rooms looks like bratinslava in 1973', rating: 4 }],
-        description: 'At the Four Seasons Hotel we offer great servieces and all kind of exlusive offerings. Three meals a day service is available and all the room service you would like',
-        price: 50
-    }, {
-        _id: 2,
-        name: 'four seasons',
-        images: ['/images/hotel-1.jpg'],
-        adress: {
-            country: 'USA',
-            city: 'los angels',
-            street: 24,
-        },
-        rating: 3.5,
-        reviews: [{ date: new Date(), user: 'tony albertini', review: 'i will comeback again somtinme. amazing place i cant belive i was there', rating: 4 },
-        { date: new Date(), user: 'adam smith', review: 'shitty place no parking and the rooms looks like bratinslava in 1973', rating: 4 }],
-        description: 'At the Four Seasons Hotel we offer great servieces and all kind of exlusive offerings. Three meals a day service is available and all the room service you would like',
-        price: 50
-    }, {
-        _id: 3,
-        name: 'four seasons',
-        reviews: [{ date: new Date(), user: 'tony albertini', review: 'i will comeback again somtinme. amazing place i cant belive i was there', rating: 4 },
-        { date: new Date(), user: 'adam smith', review: 'shitty place no parking and the rooms looks like bratinslava in 1973', rating: 4 }],
-        images: ['/images/hotel-1.jpg', '/images/hotel-3.jpg'],
-        adress: {
-            country: 'USA',
-            city: 'los angels',
-            street: 24,
-        }
-    }]
 
-    let id = Number(match.params.id) - 1
+    const dispatch = useDispatch()
+    const hotelDetails = useSelector(state => state.hotelDetails);
+    const { loading, error, hotel } = hotelDetails
 
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin
+
+    
+    const hotelReviewCreate = useSelector(state => state.hotelReviewCreate);
+    const { success: successHotelReview, error: errorHotelReview } = hotelReviewCreate
+
+
+    const [rating, setRating] = useState(0)
+    const [comment, setComment] = useState('')
+    const [show, setShow] = useState(false)
 
     useEffect(() => {
-        id = match.params.id
-    }, [id])
+        if (successHotelReview) {
+            alert('Review Submitted')
+            setRating(0)
+            setComment('')
+            dispatch({ type: HOTEL_CREATE_REVIEW_RESET })
+        }
+        if(errorHotelReview) setShow(true)
+        dispatch(listHotelDetails(match.params.id))
+    }, [dispatch, match,errorHotelReview])
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        console.log(hotel);
+        if(!comment) return
+        
+
+        dispatch(createHotelReview(match.params.id, { rating, comment }))
+    }
 
     return (
         <div className='hotel-screen'>
-            {hotels[id].images.length === 1 ?
+{(show) && <Modal show={show} setShow={setShow} text={errorHotelReview}/>}
+            {loading ? <div>loading</div> : <>  {hotel.images.length === 1 ?
                 <div className='hotel-screen__gallery'>
                     <figure >
-                        <img alt='image1' className='hotel-screen__gallery-photo' src={hotels[id].images[0]} /></figure>
+                        <img alt='image1' className='hotel-screen__gallery-photo1' src={hotel.images[0]} /></figure>
                 </div> :
-                hotels[id].images.length === 2 ?
+                hotel.images.length === 2 ?
                     <div className='hotel-screen__gallery'>
-                        <figure ><img alt='image1' className='hotel-screen__gallery-photo' src={hotels[id].images[0]} /></figure>
-                        <figure ><img alt='image2' className='hotel-screen__gallery-photo' src={hotels[id].images[1]} /></figure>
+                        <figure ><img alt='image1' className='hotel-screen__gallery-photo' src={hotel.images[0]} /></figure>
+                        <figure ><img alt='image2' className='hotel-screen__gallery-photo' src={hotel.images[1]} /></figure>
                     </div> :
                     <div className='hotel-screen__gallery'>
-                        <figure ><img alt='image1' className='hotel-screen__gallery-photo' src={hotels[id].images[0]} /></figure>
-                        <figure ><img alt='image2' className='hotel-screen__gallery-photo' src={hotels[id].images[1]} /></figure>
-                        <figure ><img alt='image3' className='hotel-screen__gallery-photo' src={hotels[id].images[2]} /></figure>
+                        <figure ><img alt='image1' className='hotel-screen__gallery-photo' src={hotel.images[0]} /></figure>
+                        <figure ><img alt='image2' className='hotel-screen__gallery-photo' src={hotel.images[1]} /></figure>
+                        <figure ><img alt='image3' className='hotel-screen__gallery-photo' src={hotel.images[2]} /></figure>
                     </div>}
 
-            <div className="hotel-screen__overview">
-                <h1 className="hotel-screen__overview-heading">
-                    Hotel Las Palmas
+                <div className="hotel-screen__overview">
+                    <h1 className="hotel-screen__overview-heading">
+                        {hotel.name}
                     </h1>
 
 
-                <div className="hotel-screen__overview-location">
-                    <i classNameNahotel-screen__me='fas fa-map-marked-alt'></i>
-                    <button className="hotel-screen-btn-inline">
-                        Albufeira, Portugal
+                    <div className="hotel-screen__overview-location">
+                        <i className='hotel-screen__me fas fa-map-marked-alt'></i>
+                        <button className="hotel-screen-btn-inline">
+                           {hotel.city},  {hotel.country}
                         </button>
+                    </div>
+
+                    <div className="hotel-screen__overview-rating">
+                        <div className="hotel-screen__overview-rating-avarage">{hotel.rating}</div>
+                        <div className="hotel-screen__overview-rating-count">{hotel.numReviews} votes</div>
+                    </div>
                 </div>
 
-                <div className="hotel-screen__overview-rating">
-                    <div className="hotel-screen__overview-rating-avarage">8.6</div>
-                    <div className="hotel-screen__overview-rating-count">429 votes</div>
-                </div>
-            </div>
-
-            <div className='hotel-screen__content'>
-                <div className='hotel-screen__content-right'>
-                    <div className='hotel-screen__content-description'>{hotels[id].description}</div>
-                    <form className='hotel-screen__content-form'>
-                        <h3 className='hotel-screen__content-form-header'>Tell us about your experience</h3>
+                <div className='hotel-screen__content'>
+                    <div className='hotel-screen__content-right'>
+                        <div className='hotel-screen__content-description'>{hotel.description}</div>
+                        <form className='hotel-screen__content-form'>
+                            <h3 className='hotel-screen__content-form-header'>Tell us about your experience</h3>
 
 
-                        <div className='hotel-screen__content-form-textarea-container'>
-                            <textarea className='hotel-screen__content-form-textarea' />
-                        </div>
-                        <div className='hotel-screen__content-form-footer'>
-                            <span>0</span><input type='range' min='0' max='10' /><span>10</span> 
-                            <button>submit</button>
-                        </div>
-                    </form>
-                </div>
-                <div className='hotel-screen__content-left'>
-                    {hotels[id].reviews.map((review, index) => (
-                        <div key={index} className='hotel-screen__content-left-review'>
-                            <blockquote className='hotel-screen__content-left-review-text'>
-                                {review.review}
-                            </blockquote>
-                            <div className='hotel-screen__content-left-review-details'>
-                                <div className='hotel-screen__content-left-review-user'>
-                                    <h4>{review.user}</h4>
-                                    <div>{review.date.toLocaleDateString("en-US")}</div>
+                            <div className='hotel-screen__content-form-textarea-container'>
+                                <textarea className='hotel-screen__content-form-textarea' 
+                                value={comment} onChange={(e) => setComment(e.target.value)}/>
                             </div>
-                            <span>{review.rating}</span>
-                            </div> 
-                        </div>  
-                    ))}
-                      <button class="hotel-screen__content-left-btn-inline">Show all <span>&rarr;</span></button>
+                            <div className='hotel-screen__content-form-footer'>
+                                <span>0</span><input type='range' min='0' max='10' 
+                                value={rating} onChange={(e) => setRating(e.target.value)}/><span>10</span>
+                                <button onClick={(e)=>submitHandler(e)}>submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className='hotel-screen__content-left'>
+                        {hotel.reviews.map((review, index) => (
+                            <div key={index} className='hotel-screen__content-left-review'>
+                                <blockquote className='hotel-screen__content-left-review-text'>
+                                    {review.comment}
+                                </blockquote>
+                                <div className='hotel-screen__content-left-review-details'>
+                                    <div className='hotel-screen__content-left-review-user'>
+                                        <h4>{review.name}</h4>
+                                        {/* <div>{review.date.toLocaleDateString("en-US")}</div> */}
+                                    </div>
+                                    <span>{review.rating}</span>
+                                </div>
+                            </div>
+                        ))}
+                        <button className="hotel-screen__content-left-btn-inline">Show all <span>&rarr;</span></button>
+                    </div>
                 </div>
-            </div>
-            
-        </div>
+            </>}
+        </div >
     )
 }

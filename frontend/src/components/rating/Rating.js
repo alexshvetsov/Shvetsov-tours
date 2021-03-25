@@ -5,6 +5,7 @@ import './rating.scss'
 const Rating = ({ value, text, color }) => {
     return (
         <div className='rating'>
+            <span className="rating__stars">
             <span>
                 <i style={{color}} className={value >= 1 ? 'fas fa-star' : value >= 0.5 ? 'fas fa-star-half-alt' : 'far fa-star'} /> 
             </span>
@@ -19,6 +20,7 @@ const Rating = ({ value, text, color }) => {
             </span>
             <span>
                 <i style={{color}} className={value >= 5 ? 'fas fa-star' : value >= 4.5 ? 'fas fa-star-half-alt' : 'far fa-star'} />
+            </span>
             </span>
             <span className='rating__text'>{text && text}</span>
         </div>

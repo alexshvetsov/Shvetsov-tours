@@ -6,13 +6,21 @@ import {
   userLoginReducer, userRegisterReducer,
 } from './reducers/userReducers.js'
 
-import {hotelCreateReducer} from './reducers/hotelReducers.js'
+import {hotelCreateReducer,hotelListReducer,hotelDetailsReducer, hotelReviewCreateReducer} from './reducers/hotelReducers.js'
+import { deleteFavoriteHotelReducer,addFavoriteHotelReducer,favoriteHotelListReducer } from './reducers/favoriteHotelReducers.js';
 
 const reducer = combineReducers({
   
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
-  hotelCreate:hotelCreateReducer
+  hotelCreate:hotelCreateReducer,
+  hotelList:hotelListReducer,
+  hotelDetails:hotelDetailsReducer,
+  hotelReviewCreate:hotelReviewCreateReducer,
+  favoriteHotelList:favoriteHotelListReducer,
+  addFavoriteHotel:addFavoriteHotelReducer,
+  deleteFavoriteHotel:deleteFavoriteHotelReducer
+
 
 })
 

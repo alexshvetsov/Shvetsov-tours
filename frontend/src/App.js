@@ -8,6 +8,7 @@ import RegisterScreen from './screens/registerScreen/RegisterScreen';
 import { HotelsScreen } from './screens/hotelsScreen/HotelsScreen';
 import { HotelScreen } from './screens/hotelScreen/HotelScreen';
 import NewHotelForm from './screens/NewHotelForm/NewHotelForm';
+import FollowedHotels from './screens/followedHotels/FollowedHotels';
 
 
 const App = () => {
@@ -18,11 +19,15 @@ const App = () => {
         <main >
           <Sidebar />
           <section className='main-area'>
-          <Route path='/' component={HotelsScreen} exact/>
+          <Route path='/hotels/followed' component={FollowedHotels} exact/>
           <Route path='/hotels/new' component={NewHotelForm} exact />
           <Route path='/hotel/:id' component={HotelScreen} exact/>
           <Route path='/login' component={LoginScreen} />
           <Route path='/register' component={RegisterScreen} />
+          <Route path='/search/:keyword' component={HotelsScreen} exact />
+          <Route path='/page/:pageNumber' component={HotelsScreen} exact />
+          <Route path='/search/:keyword/page/:pageNumber' component={HotelsScreen} exact />
+          <Route path='/' component={HotelsScreen} exact/>
           </section>
         </main>
       </div>

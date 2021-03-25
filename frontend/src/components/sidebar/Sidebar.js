@@ -13,10 +13,10 @@ const Sidebar = () => {
                     <NavLink to="/" className="side-nav__link" onClick={()=>setActiveLink('home')}>
 
                         <span>Hotel</span>
-                    </NavLink>
+                    </NavLink> 
                 </li>
                 <li className={`side-nav__item ${activeLink==='home2'?'side-nav__item--active':''}`}>
-                    <NavLink to="/login" className="side-nav__link" onClick={()=>setActiveLink('home2')}>
+                    <NavLink to="/hotels/followed" className="side-nav__link" onClick={()=>setActiveLink('home2')}>
 
                         <span>Followed</span>
                     </NavLink>
