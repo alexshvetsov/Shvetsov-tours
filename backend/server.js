@@ -7,7 +7,8 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import userRoutes from './routes/userRoutes.js';
 import hotelRoutes from './routes/hotelRoutes.js'
 import favoriteHotelRoutes from './routes/favoriteHotelRoutes.js'
-
+import whatsappRoutes from './routes/whatsappRoutes.js'
+  
 
 dotenv.config()
 
@@ -25,8 +26,9 @@ app.use('/api/users', userRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/hotels', hotelRoutes);
 app.use('/api/favoriteHotels', favoriteHotelRoutes);
+app.use('/api/whatsapp', whatsappRoutes);
 
-
+  
 
 
 const __dirname = path.resolve()

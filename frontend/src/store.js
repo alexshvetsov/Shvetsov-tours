@@ -8,6 +8,8 @@ import {
 
 import {hotelCreateReducer,hotelListReducer,hotelDetailsReducer, hotelReviewCreateReducer} from './reducers/hotelReducers.js'
 import { deleteFavoriteHotelReducer,addFavoriteHotelReducer,favoriteHotelListReducer } from './reducers/favoriteHotelReducers.js';
+import { messageReducer } from './reducers/whatsappReducers.js';
+import { toggleReducer } from './reducers/expendReducer.js';
 
 const reducer = combineReducers({
   
@@ -19,7 +21,9 @@ const reducer = combineReducers({
   hotelReviewCreate:hotelReviewCreateReducer,
   favoriteHotelList:favoriteHotelListReducer,
   addFavoriteHotel:addFavoriteHotelReducer,
-  deleteFavoriteHotel:deleteFavoriteHotelReducer
+  deleteFavoriteHotel:deleteFavoriteHotelReducer,
+  whatsapp:messageReducer,
+  sidebar:toggleReducer
 
 
 })

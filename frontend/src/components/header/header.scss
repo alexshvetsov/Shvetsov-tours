@@ -1,10 +1,35 @@
 @import "../../sass/variables.scss";
 
+.left-side{
+    display: flex;
+}
+
 .logo{
     height: 3.25rem;
     margin-left: 2rem;
 }
 
+.menu-toggle{
+    margin-left: 1rem;
+    justify-self: center;
+    align-self: center;
+    display: none;
+    height: 3.25rem;
+
+    padding: .2rem .5rem;
+    border: none;
+    border-radius: .5rem;
+    @media only screen and (max-width:$bp-medium){
+        display: flex;
+        flex-direction: column;  
+        justify-content: space-evenly;
+    }
+}
+.bar1, .bar2, .bar3 {
+    width: 20px;
+    height: 3px;
+    background-color: #333;
+  }
 
 .sticky {    
     position: fixed;
@@ -19,8 +44,9 @@
     z-index: 12212;
     font-size: 1.4rem;
     height: 7rem;
-    background-color: #fff;
-    border-bottom: $--line; 
+    background-color: $--color-grey-dark-1; 
+
+    // border-bottom: $--line; 
 
     display: flex;
     justify-content: space-between;
@@ -66,8 +92,8 @@
       height: fit-content;
       padding: .2rem .5rem;
       border: none;
+      border-radius: .5rem;    
       background:salmon;
-border-radius: .5rem;    
       &:hover{
            outline: none;
            border: none;

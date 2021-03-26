@@ -17,14 +17,11 @@ const getHotels = asyncHandler(async (req, res) => {
     .limit(pageSize)
     .skip(pageSize * (page - 1))
 
-  console.log(keyword);
-  console.log(hotels);
   res.json({ hotels, page, pages: Math.ceil(count / pageSize) })
 })
 
 //public route, fetching hotel by id get /:id
 const getHotelById = asyncHandler(async (req, res) => {
-  console.log('as');
   const hotel = await Hotel.findById(req.params.id)
   if (hotel) {
     res.json(hotel)

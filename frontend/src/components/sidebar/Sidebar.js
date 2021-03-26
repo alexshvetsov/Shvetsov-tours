@@ -1,14 +1,22 @@
 import React,{useState,useEffect} from 'react'
 import { NavLink } from 'react-router-dom';
 import './sidebar.scss'
+import { useSelector } from 'react-redux';
+
 
 
 const Sidebar = () => {
 
     const [activeLink,setActiveLink]=useState('home')
+
+    const sidebar = useSelector(state => state.sidebar);
+    const { expend } = sidebar
+
+
+
     return (
-        <nav className="sidebar" >
-            <ul className="side-nav">
+        <nav className="sidebar" > 
+            <ul className={`side-nav ${expend ? 'expend-nav':''}`}>
                 <li className={`side-nav__item ${activeLink==='home'?'side-nav__item--active':''}`}>
                     <NavLink to="/" className="side-nav__link" onClick={()=>setActiveLink('home')}>
 
@@ -28,7 +36,7 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li className={`side-nav__item ${activeLink==='home4'?'side-nav__item--active':''}`}>
-                    <NavLink to="/login" className="side-nav__link" onClick={()=>setActiveLink('home4')}>
+                    <NavLink to="/Contact" className="side-nav__link" onClick={()=>setActiveLink('home4')}>
 
                         <span>Contact Me</span>
                     </NavLink>

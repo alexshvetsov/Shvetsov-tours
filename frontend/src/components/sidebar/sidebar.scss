@@ -10,7 +10,6 @@
 
 
 
-
 .side-nav{
     font-size: 1.4rem;
     list-style: none;
@@ -19,6 +18,8 @@
     @media only screen and (max-width:$bp-medium){
         display: flex;
         margin: 0;
+        height: 0;
+        transition: all 1s;
     }
 
 
@@ -116,4 +117,13 @@
         display: none; 
     }
 
+}
+
+.expend-nav{
+    height: 5rem;
+    transition: all 1s;
+    @media only screen and (max-width:$bp-small){
+        height: 6rem;
+        transition: all 1s;
+    }
 }
