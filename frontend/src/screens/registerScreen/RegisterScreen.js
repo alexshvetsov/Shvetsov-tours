@@ -13,7 +13,7 @@ const RegisterScreen = ({ history }) => {
 
     const dispatch = useDispatch();
     const userRegister = useSelector(state => state.userRegister);
-    const { error, loading, userInfo } = userRegister;
+    const {  userInfo } = userRegister;
 
 
     const submitHandler = (e) => {
@@ -27,10 +27,10 @@ const RegisterScreen = ({ history }) => {
     };
 
     useEffect(() => {
-        if(userInfo){
+        if (userInfo) {
             history.push('/')
         }
-      
+
     }, [history, userInfo])
 
 
@@ -77,7 +77,7 @@ const RegisterScreen = ({ history }) => {
                     </button>
                 </div>
             </form>
-
+            {message && <p>{message}</p>}
 
         </div>
     )

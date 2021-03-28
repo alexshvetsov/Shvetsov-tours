@@ -10,10 +10,10 @@ export const HotelScreen = ({ match }) => {
 
     const dispatch = useDispatch()
     const hotelDetails = useSelector(state => state.hotelDetails);
-    const { loading, error, hotel } = hotelDetails
+    const { loading, hotel } = hotelDetails
 
-    const userLogin = useSelector(state => state.userLogin);
-    const { userInfo } = userLogin
+    // const userLogin = useSelector(state => state.userLogin);
+    // const { userInfo } = userLogin
 
     
     const hotelReviewCreate = useSelector(state => state.hotelReviewCreate);
@@ -33,7 +33,7 @@ export const HotelScreen = ({ match }) => {
         }
         if(errorHotelReview) setShow(true)
         dispatch(listHotelDetails(match.params.id))
-    }, [dispatch, match,errorHotelReview])
+    }, [dispatch, match,errorHotelReview,successHotelReview])
 
     const submitHandler = (e) => {
         e.preventDefault()

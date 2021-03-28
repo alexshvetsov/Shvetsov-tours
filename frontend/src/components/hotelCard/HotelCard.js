@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+import React from 'react'
+import { useDispatch } from 'react-redux';
 import Rating from '../../components/rating/Rating'
 import { NavLink } from 'react-router-dom';
 import './hotelCard.scss'
-import img from './hotel1.jpg'
 import { createFavoriteHotelAction,deleteFavoriteHotel } from '../../actions/favoriteHotelActions';
 
 const HotelCard = ({ hotel, index, id }) => {
@@ -22,7 +20,7 @@ const HotelCard = ({ hotel, index, id }) => {
 
         <div key={index} className='hotel-card'>
             <div className='hotel-card__heading'>
-                {hotel.coverImage && <img className='hotel-card__background-image' src={hotel.coverImage} alt='background-image' />}
+                {hotel.coverImage && <img className='hotel-card__background-image' src={hotel.coverImage} alt='background' />}
                 <h3 className='hotel-card__name'>{hotel.name}</h3>
                 <i className={` hotel-card__invisable-like ${id ? 'fas fa-heart' : 'far fa-heart'}`} onClick={toggleFavoriteHotel}></i>
                 <i className='fas fa-map-marked-alt hotel-card__invisable-map'></i>

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { listHotels } from '../../actions/hotelActions.js';
 import { listFavoriteHotels } from '../../actions/favoriteHotelActions.js';
-import Rating from '../../components/rating/Rating'
-import { NavLink } from 'react-router-dom';
+// import Rating from '../../components/rating/Rating'
+// import { NavLink } from 'react-router-dom';
 import './hotelsScreen.scss'
 import HotelCard from '../../components/hotelCard/HotelCard';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ export const HotelsScreen = ({match}) => {
     const dispatch = useDispatch()
 
     const hotelList = useSelector(state => state.hotelList);
-    const { loading, error, hotels } = hotelList
+    const { loading, hotels } = hotelList
 
     const favoriteHotelList = useSelector(state => state.favoriteHotelList);
     const { error:errorFavoriteHotelList, loading:loadingFavoriteHotelList, favoriteHotels } = favoriteHotelList;

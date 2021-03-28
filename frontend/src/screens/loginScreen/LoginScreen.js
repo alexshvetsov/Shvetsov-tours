@@ -10,7 +10,7 @@ const LoginScreen = ({  history }) => {
 
     const dispatch = useDispatch();
     const userLogin = useSelector(state => state.userLogin);
-    const { error, loading, userInfo } = userLogin;
+    const {  userInfo } = userLogin;
 
     const submitHandler = (e) => {
         e.preventDefault();

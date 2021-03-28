@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import { NavLink } from 'react-router-dom';
 import './sidebar.scss'
 import { useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ const Sidebar = () => {
     const sidebar = useSelector(state => state.sidebar);
     const { expend } = sidebar
 
-
+//useEffect that changes the active sidebar dependes on the url
 
     return (
         <nav className="sidebar" > 

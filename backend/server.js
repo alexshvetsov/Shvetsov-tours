@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser'
 import dotenv from 'dotenv';
 import connectDB from './config/db.js'
 import path from 'path';
@@ -8,7 +9,8 @@ import userRoutes from './routes/userRoutes.js';
 import hotelRoutes from './routes/hotelRoutes.js'
 import favoriteHotelRoutes from './routes/favoriteHotelRoutes.js'
 import whatsappRoutes from './routes/whatsappRoutes.js'
-  
+import { sendEmail } from './controllers/mailController.js';
+
 
 dotenv.config()
 
@@ -28,23 +30,26 @@ app.use('/api/hotels', hotelRoutes);
 app.use('/api/favoriteHotels', favoriteHotelRoutes);
 app.use('/api/whatsapp', whatsappRoutes);
 
-  
 
+app.post('/api/sendEmail', (req, res) => {
+
+  sendEmail('codebesti@gmail.com', 'john doe', "hello")
+})
 
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/frontend/build')))
-  
-    app.get('*', (req, res) =>
-      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
-    )
-  } else {
-    app.get('/', (req, res) => {
-      res.send('API is running....')
-    })
-  }
+  app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  )
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running....')
+  })
+}
 
 
 app.use(notFound)
@@ -53,4 +58,4 @@ app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 
-app.listen(PORT, console.log('Server running in ' + process.env.NODE_ENV + ' mode on port ' + PORT))  
+app.listen(PORT, console.log('Server running in ' + process.env.NODE_ENV + ' mode on port ' + PORT))

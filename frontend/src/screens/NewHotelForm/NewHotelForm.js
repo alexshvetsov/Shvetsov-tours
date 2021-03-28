@@ -22,12 +22,12 @@ const NewHotelForm = () => {
     const [galleryImages, setGalleryImages] = useState([''])
     const [uploading, setUploading] = useState(false);
     const [show, setShow] = useState(true);
-    const [showPreview, setShowPreview] = useState(true);
-    const [showError, setShowError] = useState(true);
+    // const [showPreview, setShowPreview] = useState(true);
+    // const [showError, setShowError] = useState(true);
     const [error, setError] = useState(false);
     const [showModal, setShowModal] = useState(false)
     const hotelCreate = useSelector(state => state.hotelCreate);
-    const { error: hotelCreateError, loading, hotel } = hotelCreate;
+    const {  hotel } = hotelCreate;
 
     const dispatch = useDispatch();
 

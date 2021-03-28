@@ -18,7 +18,7 @@ export const createHotelAction = (message) => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}` 
             },
         }
-        await axios.post(`/api/whatsapp`, {message}, config)
+        await axios.post(`/api/sendEmail`, {message}, config)
 
         dispatch({
             type: POST_WHATSAPP_SUCCESS

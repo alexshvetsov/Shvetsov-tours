@@ -15,7 +15,7 @@ const Header = () => {
     var header = '';
 
     const userLogin = useSelector(state => state.userLogin);
-    const { error, loading, userInfo } = userLogin;
+    const {  userInfo } = userLogin;
     const dispatch = useDispatch()
 
 
@@ -52,9 +52,9 @@ const Header = () => {
             <div className='left-side'>
                 <img src='/images/stours.jpg' alt="trillo logo" className="logo" />
                 <button className="menu-toggle" onClick={toggleExpend}>
-                    <div class="bar1"></div>
-                    <div class="bar2"></div>
-                    <div class="bar3"></div>
+                    <div className="bar1"></div>
+                    <div className="bar2"></div>
+                    <div className="bar3"></div>
                 </button>
             </div>
 
