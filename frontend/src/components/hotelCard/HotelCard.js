@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Rating from '../../components/rating/Rating'
 import { NavLink } from 'react-router-dom';
 import './hotelCard.scss'
-import { createFavoriteHotelAction,deleteFavoriteHotel } from '../../actions/favoriteHotelActions';
+import { createFavoriteHotelAction, deleteFavoriteHotel } from '../../actions/favoriteHotelActions';
 
 const HotelCard = ({ hotel, index, id }) => {
     const dispatch = useDispatch()
@@ -28,9 +28,9 @@ const HotelCard = ({ hotel, index, id }) => {
             <div className='hotel-card__adress'>
                 {hotel.city} {hotel.street}, {hotel.country}
             </div>
-            <Rating value={hotel.rating/2} text={`${hotel.numReviews | index !== 'demo'? 0:5} reviews`} />
+            <Rating value={hotel.rating / 2} text={`${index === 'demo' ? 6 : hotel.numReviews ? hotel.numReviews : 0} reviews`} />
             <div className='hotel-card__footer'>
-                <NavLink to={index !== 'demo'?`/hotel/${hotel._id}`:'#'} className='hotel-card__btn'>
+                <NavLink to={index !== 'demo' ? `/hotel/${hotel._id}` : '#'} className='hotel-card__btn'>
                     details
                 </NavLink>
             </div>

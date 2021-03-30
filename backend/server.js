@@ -32,8 +32,8 @@ app.use('/api/whatsapp', whatsappRoutes);
 
 
 app.post('/api/sendEmail', (req, res) => {
-
-  sendEmail('codebesti@gmail.com', 'john doe', "hello")
+const content = req.body
+  sendEmail('codebesti@gmail.com', 'john doe', "hello",content)
 })
 
 const __dirname = path.resolve()

@@ -4,7 +4,7 @@ import {
 } from '../constants/whatsappConstants.js'
 
 
-export const createHotelAction = (message) => async (dispatch, getState) => {
+export const createHotelAction = (content) => async (dispatch, getState) => {
     try {
         
         dispatch({
@@ -15,10 +15,10 @@ export const createHotelAction = (message) => async (dispatch, getState) => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${userInfo.token}` 
+                Authorization: `Bearer ${userInfo.token}`  
             },
         }
-        await axios.post(`/api/sendEmail`, {message}, config)
+        await axios.post(`/api/sendEmail`, content, config)
 
         dispatch({
             type: POST_WHATSAPP_SUCCESS

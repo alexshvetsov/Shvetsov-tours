@@ -1,16 +1,15 @@
 import mailer from 'nodemailer';
 import { Hello } from '../middleware/helloTemplate.js'
 
-const getEmailData = (to, name, template) => {
+const getEmailData = (to, name, template,content) => {
     let data = null;
-
     switch (template) {
         case 'hello':
             data = {
                 from: 'Alex Sh <alexsh1412@yahoo.com>',
                 to: 'alexsh1412@gmail.com',
                 subject: "Hello from shvetsov tours",
-                html: Hello()
+                html: Hello(content)
             }
             break
         default:
@@ -19,7 +18,8 @@ const getEmailData = (to, name, template) => {
     return data
 }
 
-const sendEmail = (to, name, type) => {
+const sendEmail = (to, name, type, content) => {
+
     const smtpTransport = mailer.createTransport({
         host: 'smtp.mail.yahoo.com',
         port: 465,
@@ -33,16 +33,12 @@ const sendEmail = (to, name, type) => {
         logger: true 
 })
 
-    const mail = getEmailData(to, name, type)
-    console.log(mail);
+    const mail = getEmailData(to, name, type,content)
 
     smtpTransport.sendMail(mail, function (error, response) {
         if (error) {
             console.log(error);
-        } else {
-            console.log('sent eamil');
-            response.status(201).json({ message: 'mail sent' })
-        }
+        } 
         smtpTransport.close()
     })
 }

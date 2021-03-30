@@ -9,19 +9,20 @@ const RegisterScreen = ({ history }) => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [coniformPassword, setConiformPassword] = useState('');
-    const [message, setMessage] = useState(null);
+    const [passowrdError, setPasswordError] = useState(false);
 
     const dispatch = useDispatch();
     const userRegister = useSelector(state => state.userRegister);
-    const {  userInfo } = userRegister;
+    const {  error,userInfo } = userRegister;
 
 
     const submitHandler = (e) => {
         e.preventDefault();
 
         if (password !== coniformPassword) {
-            setMessage('Passwords do not match')
+            setPasswordError(true)
         } else {
+            setPasswordError(false)
             dispatch(register(name, email, password))
         }
     };
@@ -38,47 +39,50 @@ const RegisterScreen = ({ history }) => {
 
     return (
         <div className='register-screen'>
-            <form className='form' >
-                <h2 className='form__heading'>Sigh Up</h2>
-                <div className='form__input-area'>
-                    <input className='form__input' type='text' placeholder='Name'
+            <form className='register-screen__form'>
+                <h2 className='register-screen__form-heading'>Sigh Up</h2>
+                {error ==='exists'?
+                <p className='register-screen__error'>* Email already taken</p>:
+                 error? <p className='register-screen__error'>* All fileds are required</p>:
+                 passowrdError? <p className='register-screen__error'>* Password does not match</p>:null}
+            
+                <div className='register-screen__form-input-area'>
+                    <input className='register-screen__form-input' type='text' placeholder='Name'
                         value={name} onChange={(e) => setName(e.target.value)} />
-                    <span className='form__icon-span'>
-                        <i className='fas fa-user form__icon'></i>
+                    <span className='register-screen__form-icon-span'>
+                        <i className='fas fa-user register-screen__form-icon'></i>
                     </span>
                 </div>
-                <div className='form__input-area'>
-                    <input className='form__input' type='email' placeholder='Email'
+                <div className='register-screen__form-input-area'>
+                    <input className='register-screen__form-input' type='email' placeholder='Email'
                         value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <span className='form__icon-span'>
-                        <i className='fas fa-user form__icon'></i>
+                    <span className='register-screen__form-icon-span'>
+                        <i className='fas fa-envelope register-screen__form-icon'></i>
                     </span>
                 </div>
 
-                <div className='form__input-area'>
-                    <input className='form__input' type='passowrd' placeholder='Passowrd'
+                <div className='register-screen__form-input-area'>
+                    <input className='register-screen__form-input' type='passowrd' placeholder='Passowrd'
                         value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <span className='form__icon-span'>
-                        <i className='fas fa-lock form__icon'></i>
+                    <span className='register-screen__form-icon-span'>
+                        <i className='fas fa-lock register-screen__form-icon'></i>
                     </span>
                 </div>
-                <div className='form__input-area'>
-                    <input className='form__input' type='passowrd' placeholder='Confirm Passowrd'
+                <div className='register-screen__form-input-area'>
+                    <input className='register-screen__form-input' type='passowrd' placeholder='Confirm Passowrd'
                         value={coniformPassword} onChange={(e) => setConiformPassword(e.target.value)} />
-                    <span className='form__icon-span'>
-                        <i className='fas fa-lock form__icon'></i>
+                    <span className='register-screen__form-icon-span'>
+                        <i className='fas fa-lock register-screen__form-icon'></i>
                     </span>
                 </div>
-                <div className='form__buttons'>
-                    <button className='form__btn' onClick={submitHandler}>Sign-Up</button>
-                    <button className='btn form__btn' onClick={(e) => e.preventDefault()}>
-                        <span className="btn__visable">Guset</span>
-                        <span className="btn__invisible">continue</span>
+                <div className='register-screen__form-buttons'>
+                    <button className='register-screen__form-btn' onClick={submitHandler}>Sign-Up</button>
+                    <button className='register-screen__ btn register-screen__form-btn' onClick={(e) => e.preventDefault()}>
+                        <span className="register-screen__btn-visable">Guset</span>
+                        <span className="register-screen__btn-invisible">continue</span>
                     </button>
                 </div>
             </form>
-            {message && <p>{message}</p>}
-
         </div>
     )
 }
