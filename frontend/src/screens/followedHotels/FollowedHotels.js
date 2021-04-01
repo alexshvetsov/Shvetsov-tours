@@ -19,7 +19,6 @@ const FollowedHotels = ({history}) => {
 
  
     useEffect(() => {
-        console.log(userInfo);
         if(!userInfo){
             history.push('/')
         }

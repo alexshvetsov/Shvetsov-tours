@@ -60,12 +60,13 @@ const Header = () => {
 
             <Route render={({ history }) => <SearchBox history={history} />} />
             <nav className="user-nav">
-
                 <div className="user-nav__sign-in">
-                    <i className='fas fa-user '></i>
-                    {userInfo ? <p>{userInfo.name}</p> : <NavLink to="/login" className="user-nav__login" activeClassName="link__active">Sign In</NavLink>}
+                    <i className='fas fa-user'></i>
+                    {userInfo ? <p>{userInfo.name}</p> : <NavLink to="/login" 
+                    className="user-nav__login" activeClassName="link__active">Sign In</NavLink>}
                 </div>
-                {userInfo && <button className='user-nav__logout' onClick={(e) => logoutHandler(e)}>Logout</button>}
+                {userInfo && 
+                <button className='user-nav__logout' onClick={(e) => logoutHandler(e)}>Logout</button>}
             </nav>
         </header>
     )

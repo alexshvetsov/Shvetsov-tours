@@ -1,5 +1,4 @@
 export const Hello = data => {
-    console.log(data.message);
     return `
     <!DOCTYPE html>
     <html style="margin:0; padding:0;">

@@ -21,7 +21,6 @@ const ContactUs = () => {
             setShowErrors(true)
             return
         }
-        console.log('asd');
         dispatch(createHotelAction({name,email,message}))
         setShowModal(true)
         setShowErrors(false)
@@ -32,7 +31,8 @@ const ContactUs = () => {
 
     return (
         <div className='contact-us'>
-            {(showModal) && <Modal show={showModal} setShow={setShowModal} text='message Submitted' />}
+            {(showModal) && <Modal show={showModal}
+             setShow={setShowModal} text='message Submitted' />}
             <form className='contact-us__form'>
                 <h1 className='contact-us__heading'>
                 Contact Us

@@ -18,7 +18,8 @@ const App = () => {
       <div className='app'>
         <Header />
         <main >
-          <Sidebar />
+          <Route render={({ history }) => <Sidebar history={history} />} />
+
           <section className='main-area'>
           <Route path='/hotels/followed' component={FollowedHotels} exact/>
           <Route path='/hotels/new' component={NewHotelForm} exact />

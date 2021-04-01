@@ -46,6 +46,44 @@ const LoginScreen = ({ history }) => {
                     <button className='login-screen__form-btn' onClick={(e) => { e.preventDefault(); history.push('/register') }}>Sign-Up</button>
                 </div>
             </form>
+
+            {/* <form className='sign-in__form'>
+                <h1 className='sign-in__heading'>
+                    Contact Us
+                </h1>
+                <div className="sign-in__input-area">
+                    <label htmlFor="email" className="sign-in__label">Email : </label>
+                    <input placeholder='Enter your email here' type="text"
+                        name='email' className="sign-in__input"
+                        onChange={(e) => setEmail(e.target.value)} value={email}
+                        required />
+                </div>
+                <div className="sign-in__input-area">
+                    <label htmlFor="password" className="sign-in__label">Password : </label>
+                    <input placeholder='Enter your password here' type="password"
+                        name='password' className="sign-in__input"
+                        onChange={(e) => setPassword(e.target.value)} value={password}
+                        required />
+                </div>
+                {error && <p className='sign-in__error'>* Email or Password are incorrect</p>}
+                <div className="sign-in__sign-buttons">
+                    <button onClick={submitHandler}
+                        className='sign-in__button'>
+                        Sign In
+                </button>
+                    <button onClick={(e) => { e.preventDefault(); history.push('/register') }}
+                        className='sign-in__button'>
+                        Sign Up
+                </button>
+                </div>
+                <div className="sign-in__guest-button">
+
+                    <button
+                        className='sign-in__guest'>
+                        Enter as guest
+                </button>
+                </div>
+            </form> */}
         </div>
     )
 }
