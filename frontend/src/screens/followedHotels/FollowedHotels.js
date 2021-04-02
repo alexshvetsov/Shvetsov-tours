@@ -27,12 +27,12 @@ const FollowedHotels = ({history}) => {
     }, [dispatch,])
 
     return (
-        <div className='hotels-screen' style={{ backgroundImage: `url('./hotel1.jpg')` }}>
+        <div className='hotels-screen' >
             {(!loading && !loadingHotelList &&  hotels.hotels && hotels.hotels.length>0&& favoriteHotels && favoriteHotels.length>0) && favoriteHotels.map((favoriteHotel, index) =>
              <HotelCard hotel={favoriteHotel.hotel}
                 index={index} key={index} id={!error ? favoriteHotels.find(FH => FH.hotel === favoriteHotel.hotel) : undefined} />)
-
             }
+            {(!loading && !loadingHotelList &&  hotels.hotels && hotels.hotels.length>0&& favoriteHotels && favoriteHotels.length==0) &&<div className='empty'>there is no hotels followed</div>}
         </div>
     )
 }

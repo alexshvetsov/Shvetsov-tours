@@ -27,6 +27,19 @@ const RegisterScreen = ({ history }) => {
         }
     };
 
+    const submitHandlerAsGuest = (e) => {
+        e.preventDefault();
+        const randomGuestNumber =(Math.random() * 100) + 1
+            const gusetEmail= randomGuestNumber+'guest@gmail.com'
+            const passwordGuest = 111
+            const nameGuest ='guest'
+            setName(nameGuest)
+            setPassword(passwordGuest)
+            setEmail(gusetEmail) 
+            setConiformPassword(passwordGuest)
+            dispatch(register(name, email, password))
+    };
+
     useEffect(() => {
         if (userInfo) {
             history.push('/')
@@ -62,14 +75,14 @@ const RegisterScreen = ({ history }) => {
                 </div>
 
                 <div className='register-screen__form-input-area'>
-                    <input className='register-screen__form-input' type='passowrd' placeholder='Passowrd'
+                    <input className='register-screen__form-input' type='password' placeholder='Passowrd'
                         value={password} onChange={(e) => setPassword(e.target.value)} />
                     <span className='register-screen__form-icon-span'>
                         <i className='fas fa-lock register-screen__form-icon'></i>
                     </span>
                 </div>
                 <div className='register-screen__form-input-area'>
-                    <input className='register-screen__form-input' type='passowrd' placeholder='Confirm Passowrd'
+                    <input className='register-screen__form-input' type='password' placeholder='Confirm Passowrd'
                         value={coniformPassword} onChange={(e) => setConiformPassword(e.target.value)} />
                     <span className='register-screen__form-icon-span'>
                         <i className='fas fa-lock register-screen__form-icon'></i>
@@ -77,7 +90,7 @@ const RegisterScreen = ({ history }) => {
                 </div>
                 <div className='register-screen__form-buttons'>
                     <button className='register-screen__form-btn' onClick={submitHandler}>Sign-Up</button>
-                    <button className='register-screen__ btn register-screen__form-btn' onClick={(e) => e.preventDefault()}>
+                    <button className='register-screen__btn register-screen__form-btn' onClick={submitHandlerAsGuest}>
                         <span className="register-screen__btn-visable">Guset</span>
                         <span className="register-screen__btn-invisible">continue</span>
                     </button>

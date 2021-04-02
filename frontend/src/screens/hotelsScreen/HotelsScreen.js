@@ -32,9 +32,9 @@ export const HotelsScreen = ({match}) => {
 
 
     return (
-        <div className='hotels-screen' style={{ backgroundImage: `url('./hotel1.jpg')` }}>
+        <div className='hotels-screen'>
             {(!loading && !loadingFavoriteHotelList  && hotels.hotels && hotels.hotels.length>0 ) && hotels.hotels.map((hotel, index) => <HotelCard hotel={hotel} 
-            index={index} key={index} id={!errorFavoriteHotelList?favoriteHotels.find(FH => FH.hotel === hotel._id):undefined} />)
+            index={index} key={index} id={!errorFavoriteHotelList?favoriteHotels.find(FH => FH.hotel._id === hotel._id):undefined} />)
 
             } 
             
