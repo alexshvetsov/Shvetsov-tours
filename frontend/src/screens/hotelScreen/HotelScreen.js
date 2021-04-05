@@ -38,8 +38,7 @@ export const HotelScreen = ({ match }) => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        console.log(hotel);
-        if(!comment) return
+        if(!comment) {setShow(true); return}
         
 
         dispatch(createHotelReview(match.params.id, { rating, comment }))
@@ -47,7 +46,7 @@ export const HotelScreen = ({ match }) => {
 
     return (
         <div className='hotel-screen'>
-{(show) && <Modal show={show} setShow={setShow} text={errorHotelReview}/>}
+{(show) && <Modal show={show} setShow={setShow} text={'only registered users can comment and only one comment per user'}/>}
             {loading ? <div className='hotel-screen__center'><Loader/></div> : <>  {hotel.images.length === 1 ?
                 <div className='hotel-screen__gallery'>
                     <figure >
