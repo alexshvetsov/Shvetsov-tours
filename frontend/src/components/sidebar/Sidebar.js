@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Sidebar = ({ history }) => {
     const dispatch = useDispatch()
-    const [activeLink, setActiveLink] = useState('home')
+    const [activeLink, setActiveLink] = useState('')
 
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin
@@ -20,14 +20,14 @@ const Sidebar = ({ history }) => {
 
         switch (history.location.pathname) {
             case '/hotels/new':
-                setActiveLink('home3')
+                setActiveLink('new')
                 break;
             case '/hotels/followed':
-                setActiveLink('home2')
+                setActiveLink('followed')
 
                 break;
             case '/Contact':
-                setActiveLink('home4')
+                setActiveLink('contact')
                 break;
             default:
                 setActiveLink('home')
@@ -42,26 +42,26 @@ const Sidebar = ({ history }) => {
                 <li className={`side-nav__item ${activeLink === 'home' ? 'side-nav__item--active' : ''}`}>
                     <NavLink to="/" className="side-nav__link" onClick={() => setActiveLink('home')}>
 
-                        <span>Hotel</span>
+                        <span>Hotels</span>
                     </NavLink>
                 </li>
-                <li className={`side-nav__item ${activeLink === 'home2' ? 'side-nav__item--active' : ''}`}>
+                <li className={`side-nav__item ${activeLink === 'followed' ? 'side-nav__item--active' : ''}`}>
                     <NavLink to="/hotels/followed" className="side-nav__link" onClick={() => {
-                        if (userInfo) { setActiveLink('home2') }
+                        if (userInfo) { setActiveLink('followed') }
                         else { setActiveLink('home') }
                     }}>
 
                         <span>Followed</span>
                     </NavLink>
                 </li>
-                <li className={`side-nav__item ${activeLink === 'home3' ? 'side-nav__item--active' : ''}`}>
-                    <NavLink to="/hotels/new" className="side-nav__link" onClick={() => setActiveLink('home3')}>
+                <li className={`side-nav__item ${activeLink === 'new' ? 'side-nav__item--active' : ''}`}>
+                    <NavLink to="/hotels/new" className="side-nav__link" onClick={() => setActiveLink('new')}>
 
                         <span>become a seller</span>
                     </NavLink>
                 </li>
-                <li className={`side-nav__item ${activeLink === 'home4' ? 'side-nav__item--active' : ''}`}>
-                    <NavLink to="/Contact" className="side-nav__link" onClick={() => setActiveLink('home4')}>
+                <li className={`side-nav__item ${activeLink === 'contact' ? 'side-nav__item--active' : ''}`}>
+                    <NavLink to="/Contact" className="side-nav__link" onClick={() => setActiveLink('contact')}>
 
                         <span>Contact Me</span>
                     </NavLink>
@@ -69,7 +69,7 @@ const Sidebar = ({ history }) => {
             </ul>
 
             <div className="legal">
-                &copy; 2017 by trillo. All rights reserved.
+               {history.location.pathname.includes('hotel/')?'&copy; All rights reserved to Trillo 2017 and Alex Shvetsov':'&copy; All rights reserved to Alex Shvetsov'}
                     </div>
         </nav>
 

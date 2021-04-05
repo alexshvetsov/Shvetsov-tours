@@ -1,17 +1,17 @@
 import {
-    GET_FAVORITE_HOTELS_REQUEST, GET_FAVORITE_HOTELS_SUCCESS, GET_FAVORITE_HOTELS_FAIL, ADD_FAVORITE_HOTEL,DELETE_FAVORITE_HOTEL,
+    GET_FAVORITE_HOTELS_REQUEST, GET_FAVORITE_HOTELS_SUCCESS, GET_FAVORITE_HOTELS_FAIL, ADD_FAVORITE_HOTEL, DELETE_FAVORITE_HOTEL,
     POST_FAVORITE_HOTEL_REQUEST, POST_FAVORITE_HOTEL_SUCCESS, POST_FAVORITE_HOTEL_FAIL,
     DELETE_FAVORITE_HOTEL_REQUEST, DELETE_FAVORITE_HOTEL_SUCCESS, DELETE_FAVORITE_HOTEL_FAIL
 } from '../constants/favoriteHotelConstants.js'
 
 
 
-export const favoriteHotelListReducer = (state = { favoriteHotels: [] }, action) => {
+export const favoriteHotelListReducer = (state = { }, action) => {
 
 
     switch (action.type) {
         case GET_FAVORITE_HOTELS_REQUEST:
-            return { loading: true, favoriteHotels: [] }
+            return { loading: true,  }
         case GET_FAVORITE_HOTELS_SUCCESS:
             return {
                 loading: false,
@@ -22,13 +22,19 @@ export const favoriteHotelListReducer = (state = { favoriteHotels: [] }, action)
         case ADD_FAVORITE_HOTEL:
             return {
                 loading: false,
-                favoriteHotels:action.payload ,
+                favoriteHotels: action.payload,
             }
-            case DELETE_FAVORITE_HOTEL:
-                return {
-                    loading: false,
-                    favoriteHotels: action.payload
-                }
+        case DELETE_FAVORITE_HOTEL:
+            return {
+                loading: false,
+                favoriteHotels: action.payload
+            }
+
+        case ADD_FAVORITE_HOTEL:
+            return {
+                loading: false,
+                favoriteHotels: action.payload
+            }
         default:
             return state;
     }

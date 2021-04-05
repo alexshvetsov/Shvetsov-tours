@@ -37,6 +37,7 @@
         display: none;
     }
     &__image-label {
+        cursor: pointer; 
         text-transform: uppercase;
         border-radius: 1rem;
         background-color: rgba($--color-grey-dark-3, 0.4);
@@ -112,6 +113,7 @@
 
 .textarea {
     padding-top: 1.2rem;
+    font-family: inherit;
 }
 .hidden{
     display: none;

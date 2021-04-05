@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { listFavoriteHotels } from '../../actions/favoriteHotelActions.js';
 import { listHotels } from '../../actions/hotelActions.js';
+import Loader from '../../components/loader/Loader.js';
 
 import HotelCard from '../../components/hotelCard/HotelCard.js';
 import './followedHotels.scss';
@@ -28,6 +29,8 @@ const FollowedHotels = ({history}) => {
 
     return (
         <div className='hotels-screen' >
+            {(loadingHotelList || loading) && <Loader/>}
+
             {(!loading && !loadingHotelList &&  hotels.hotels && hotels.hotels.length>0&& favoriteHotels && favoriteHotels.length>0) && favoriteHotels.map((favoriteHotel, index) =>
              <HotelCard hotel={favoriteHotel.hotel}
                 index={index} key={index} id={!error ? favoriteHotels.find(FH => FH.hotel === favoriteHotel.hotel) : undefined} />)

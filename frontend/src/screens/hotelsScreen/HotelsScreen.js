@@ -6,6 +6,7 @@ import { listFavoriteHotels } from '../../actions/favoriteHotelActions.js';
 import './hotelsScreen.scss'
 import HotelCard from '../../components/hotelCard/HotelCard';
 import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../../components/loader/Loader.js';
 
 
 export const HotelsScreen = ({match}) => {
@@ -26,6 +27,7 @@ export const HotelsScreen = ({match}) => {
     useEffect(() => {
         dispatch(listHotels(keyword, pageNumber))
         dispatch(listFavoriteHotels())
+        console.log(favoriteHotels);
     }, [dispatch,keyword, pageNumber])
 
 
@@ -33,6 +35,7 @@ export const HotelsScreen = ({match}) => {
 
     return (
         <div className='hotels-screen'>
+            {(loadingFavoriteHotelList || loading) && <Loader/>}
             {(!loading && !loadingFavoriteHotelList  && hotels.hotels && hotels.hotels.length>0 ) && hotels.hotels.map((hotel, index) => <HotelCard hotel={hotel} 
             index={index} key={index} id={!errorFavoriteHotelList?favoriteHotels.find(FH => FH.hotel._id === hotel._id):undefined} />)
 

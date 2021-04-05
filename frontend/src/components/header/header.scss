@@ -1,38 +1,40 @@
 @import "../../sass/variables.scss";
 
-.left-side{
+.left-side {
     display: flex;
 }
 
-.logo{
+.logo {
     height: 3.25rem;
     margin-left: 2rem;
 }
 
-.menu-toggle{
+.menu-toggle {
     margin-left: 1rem;
     justify-self: center;
     align-self: center;
     display: none;
     height: 3.25rem;
 
-    padding: .2rem .5rem;
+    padding: 0.2rem 0.5rem;
     border: none;
-    border-radius: .5rem;
-    @media only screen and (max-width:$bp-medium){
+    border-radius: 0.5rem;
+    @media only screen and (max-width: $bp-medium) {
         display: flex;
-        flex-direction: column;  
+        flex-direction: column;
         justify-content: space-evenly;
-        z-index:111;
+        z-index: 111;
     }
 }
-.bar1, .bar2, .bar3 {
+.bar1,
+.bar2,
+.bar3 {
     width: 20px;
     height: 3px;
     background-color: #333;
-  }
+}
 
-.sticky {    
+.sticky {
     position: fixed;
     top: 0;
     left: 0;
@@ -40,75 +42,81 @@
     padding: 0 2rem;
 }
 
-
 .header {
     z-index: 12212;
     font-size: 1.4rem;
     height: 7rem;
-    background-color: $--color-grey-dark-1; 
+    background-color: $--color-grey-dark-1;
 
-    // border-bottom: $--line; 
+    // border-bottom: $--line;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all .7s;
+    transition: all 0.7s;
 
     @media only screen and (max-width: $bp-smallest) {
         flex-wrap: wrap;
         align-content: space-around;
         height: 11rem;
-    } 
+    }
 }
 
-.user-nav{
+.user-nav {
     display: flex;
     align-items: center;
     align-self: center;
     justify-content: space-around;
     margin: 0 1rem;
     padding: 0 1rem;
+    border-radius: 0.5rem;
 
-    &> *{ 
+    & > * {
         padding: 0 3px;
         cursor: pointer;
         display: flex;
         align-items: center;
-    } 
+    }
 
     &__login,
     &__login:link,
-    &__login:visited{
+    &__login:visited {
         color: $--color-primary;
         text-decoration: none;
         text-transform: uppercase;
         padding: 0 1rem;
-        min-width: fit-content; 
-
+        min-width: fit-content;
     }
-    &__sign-in:hover{
-     background-color:$--color-grey-light-2;
+    &__sign-in:hover {
+        background-color: $--color-grey-light-2;
     }
 
-    &__sign-in{
+    &__sign-in {
         height: fit-content;
+        border-radius: 0.5rem;
+        padding: 0.2rem 0.5rem;
+        color: $--color-primary;
+        font-size: 1.6rem;
+        & i {
+            margin-right: 0.2rem;
+        }
+        @media only screen and (min-width: $bp-medium) {
+            margin-right: 1rem;
+            & i {
+                margin-right: 0.5rem;
+            }
+        }
     }
 
-    &__logout{
-      height: fit-content;
-      padding: .2rem .5rem;
-      border: none;
-      border-radius: .5rem;    
-      background:salmon;
-      &:hover{
-           outline: none;
-           border: none;
-       }
+    &__logout {
+        height: fit-content;
+        padding: 0.2rem 0.5rem;
+        border: none;
+        border-radius: 0.5rem;
+        background: salmon;
+        &:hover {
+            outline: none;
+            border: none;
+        }
     }
 }
-
-
-
-
-
- 

@@ -4,6 +4,7 @@ import asyncHandler from 'express-async-handler';
 // public route, fetching all the products get /
 const getFavoriteHotelsByUser = asyncHandler(async (req, res) => {
     const favoriteHotels = await FavoriteHotel.find({user:req.user._id}).populate('hotel')
+    console.log(favoriteHotels);
     res.json(favoriteHotels)
 })
 

@@ -30,14 +30,7 @@ const RegisterScreen = ({ history }) => {
     const submitHandlerAsGuest = (e) => {
         e.preventDefault();
         const randomGuestNumber =(Math.random() * 100) + 1
-            const gusetEmail= randomGuestNumber+'guest@gmail.com'
-            const passwordGuest = 111
-            const nameGuest ='guest'
-            setName(nameGuest)
-            setPassword(passwordGuest)
-            setEmail(gusetEmail) 
-            setConiformPassword(passwordGuest)
-            dispatch(register(name, email, password))
+           setTimeout(()=> dispatch(register('guest', randomGuestNumber+'guest@gmail.com', 111)),1000)
     };
 
     useEffect(() => {
@@ -91,7 +84,7 @@ const RegisterScreen = ({ history }) => {
                 <div className='register-screen__form-buttons'>
                     <button className='register-screen__form-btn' onClick={submitHandler}>Sign-Up</button>
                     <button className='register-screen__btn register-screen__form-btn' onClick={submitHandlerAsGuest}>
-                        <span className="register-screen__btn-visable">Guset</span>
+                        <span className="register-screen__btn-visable">Guest</span>
                         <span className="register-screen__btn-invisible">continue</span>
                     </button>
                 </div>

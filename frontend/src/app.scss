@@ -14,6 +14,8 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  height: 100%;
+  width: 100%;
 }
 
 @media only screen and (max-width: 68.75em) {
@@ -30,28 +32,41 @@ body {
   background-image: linear-gradient(to right bottom, $--color-primary-light, $--color-primary-dark);
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100vh;
+  // min-height: 100vh;
+  height: 100%;
+  width: 100%;
 }
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
 .app {
-  max-width: 120rem;
-  margin: 8rem auto;
+  // max-width: 120rem;
+  height: 100%;
+  width: 100%;
+  // margin: 8rem auto;
   background-color: $--color-grey-light-1;
   box-shadow: $--shadow-dark;
-  min-height: 50rem;
 }
-@media only screen and (max-width: 75em) {
+@media only screen and (max-width: 90em) {
   .app {
     margin: 0;
-    max-width: 100%;
+    height: fit-content;
+    max-width: 100%; 
     width: 100%;
   }
 }
 
 main {
-  min-height: 50rem;
+  // min-height: 50rem;
+  height: calc(100% - 7rem);
+
   display: flex;
   @media only screen and (max-width: $bp-medium) {
     flex-direction: column;
+    min-height: 50rem;
   }
 }
 
@@ -69,5 +84,3 @@ main {
   flex: 1;
   display: flex;
 }
-
-

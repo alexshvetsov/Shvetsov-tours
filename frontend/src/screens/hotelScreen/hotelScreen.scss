@@ -1,5 +1,5 @@
 @import "../../sass/variables.scss";
-figure{
+figure {
     flex: 1;
 }
 
@@ -9,7 +9,7 @@ figure{
         display: flex;
         &-photo1 {
             display: block;
-            margin:0 auto;
+            margin: 0 auto;
             max-height: 30rem;
             height: 100%;
         }
@@ -18,6 +18,15 @@ figure{
             width: 100%;
             max-height: 30rem;
             height: 100%;
+        }
+    }
+
+    &__center {
+      text-align: center;
+        height: 100%;
+        display: flex;
+        &>*{
+            margin: auto;
         }
     }
     &__overview {
@@ -146,14 +155,13 @@ figure{
                 }
                 &-text {
                     z-index: 10;
-                    margin-right:auto;
+                    margin-right: auto;
                 }
                 &-details {
                     margin-left: 3rem;
                 }
                 &-user {
                     align-self: center;
-
                 }
                 &-details {
                     display: flex;
@@ -178,12 +186,11 @@ figure{
                 &:hover {
                     transform: translateY(-5px);
                 }
-                
+
                 &:hover {
                     transform: translateY(5px);
-
                 }
-                
+
                 &:focus,
                 &:active {
                     outline: none;
@@ -219,7 +226,7 @@ figure{
                 padding: 0 2rem;
                 display: flex;
                 & > input {
-                    margin: 0 .5rem;
+                    margin: 0 0.5rem;
                 }
                 & > button {
                     margin-left: auto;

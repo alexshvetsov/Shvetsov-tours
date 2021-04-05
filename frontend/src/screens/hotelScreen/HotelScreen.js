@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listHotelDetails, createHotelReview } from '../../actions/hotelActions';
 import Modal from '../../components/modal/Modal';
 import { HOTEL_CREATE_REVIEW_RESET } from '../../constants/hotelConstants';
+import Loader from '../../components/loader/Loader.js';
 
 import './hotelScreen.scss'
 
@@ -47,7 +48,7 @@ export const HotelScreen = ({ match }) => {
     return (
         <div className='hotel-screen'>
 {(show) && <Modal show={show} setShow={setShow} text={errorHotelReview}/>}
-            {loading ? <div>loading</div> : <>  {hotel.images.length === 1 ?
+            {loading ? <div className='hotel-screen__center'><Loader/></div> : <>  {hotel.images.length === 1 ?
                 <div className='hotel-screen__gallery'>
                     <figure >
                         <img alt='image1' className='hotel-screen__gallery-photo1' src={hotel.images[0]} /></figure>
