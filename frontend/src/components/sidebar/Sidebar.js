@@ -23,7 +23,9 @@ const Sidebar = ({ history }) => {
                 setActiveLink('new')
                 break;
             case '/hotels/followed':
-                setActiveLink('followed')
+                if (userInfo) {
+                    setActiveLink('followed')
+                }
 
                 break;
             case '/Contact':
@@ -69,8 +71,8 @@ const Sidebar = ({ history }) => {
             </ul>
 
             <div className="legal">
-               {history.location.pathname.includes('hotel/')?'&copy; All rights reserved to Trillo 2017 and Alex Shvetsov':'&copy; All rights reserved to Alex Shvetsov'}
-                    </div>
+                <i class="far fa-copyright"></i>  {history.location.pathname.includes('hotel/') ? `All rights reserved to Trillo 2017 and Alex Shvetsov` : ' All rights reserved to Alex Shvetsov'}
+            </div>
         </nav>
 
     )

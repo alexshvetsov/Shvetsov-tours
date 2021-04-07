@@ -22,10 +22,10 @@ figure {
     }
 
     &__center {
-      text-align: center;
+        text-align: center;
         height: 100%;
         display: flex;
-        &>*{
+        & > * {
             margin: auto;
         }
     }
@@ -222,12 +222,14 @@ figure {
                     margin-bottom: 1rem;
                 }
             }
+          
             &-footer {
                 padding: 0 2rem;
                 display: flex;
                 & > input {
                     margin: 0 0.5rem;
                 }
+
                 & > button {
                     margin-left: auto;
                     padding: 0.5rem 1rem;
@@ -237,8 +239,19 @@ figure {
                     box-shadow: $--shadow-light;
                     outline: none;
                     border: none;
+                    cursor: pointer;
                 }
             }
         }
+    }
+    &__my-score {
+        cursor: not-allowed;
+        padding: 0.5rem 1rem;
+        color: #ffffff;
+        margin-left: 1rem;
+        border-radius: 3rem;
+        background-color: $--color-grey-dark-2;
+
+
     }
 }

@@ -21,7 +21,7 @@ export const HotelScreen = ({ match }) => {
     const { success: successHotelReview, error: errorHotelReview } = hotelReviewCreate
 
 
-    const [rating, setRating] = useState(0)
+    const [rating, setRating] = useState(10)
     const [comment, setComment] = useState('')
     const [show, setShow] = useState(false)
 
@@ -77,7 +77,7 @@ export const HotelScreen = ({ match }) => {
                     </div>
 
                     <div className="hotel-screen__overview-rating">
-                        <div className="hotel-screen__overview-rating-avarage">{hotel.rating}</div>
+                        <div className="hotel-screen__overview-rating-avarage">{Math.floor(hotel.rating)}</div>
                         <div className="hotel-screen__overview-rating-count">{hotel.numReviews} votes</div>
                     </div>
                 </div>
@@ -96,6 +96,7 @@ export const HotelScreen = ({ match }) => {
                             <div className='hotel-screen__content-form-footer'>
                                 <span>0</span><input type='range' min='0' max='10' 
                                 value={rating} onChange={(e) => setRating(e.target.value)}/><span>10</span>
+                                 <span className='hotel-screen__my-score'>{rating}/10</span>
                                 <button onClick={(e)=>submitHandler(e)}>submit</button>
                             </div>
                         </form>

@@ -46,7 +46,7 @@ const RegisterScreen = ({ history }) => {
     return (
         <div className='register-screen'>
             <form className='register-screen__form'>
-                <h2 className='register-screen__form-heading'>Sigh Up</h2>
+                <h2 className='register-screen__form-heading'>Sign Up</h2>
                 {error ==='exists'?
                 <p className='register-screen__error'>* Email already taken</p>:
                  error? <p className='register-screen__error'>* All fileds are required</p>:
