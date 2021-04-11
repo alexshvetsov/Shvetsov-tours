@@ -18,7 +18,7 @@ const HotelCard = ({ hotel, index, id }) => {
     const toggleFavoriteHotel = () => {
         if (!userInfo) {
             setShowModal(true)
-            setTimeout(() => { setShowModal(false) }, 1500)
+            // setTimeout(() => { setShowModal(false) }, 1500)
             return;
         }
         if (!id && !heartColor) {
@@ -30,9 +30,14 @@ const HotelCard = ({ hotel, index, id }) => {
         }
     }
 
-    useEffect(async () => {
-        await id ? setHeartColor(true) : setHeartColor(false)
-        console.log(heartColor);
+    useEffect( () => {
+        // async function fetchData() {
+        //          // You can await here
+        //          const response = await MyAPI.getData(someId);
+        //          // ...
+        //        }
+        //        fetchData();
+         id ? setHeartColor(true) : setHeartColor(false)
     }, [id,])
     return (
         <div key={index} className='hotel-card'>

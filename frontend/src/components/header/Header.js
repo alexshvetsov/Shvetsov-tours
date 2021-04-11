@@ -37,7 +37,6 @@ const Header = () => {
 
 
     useEffect(() => {
-        // console.log(myRef ? myRef.current : 'f');
 
     }, [myRef])
 
@@ -65,7 +64,9 @@ const Header = () => {
                     {userInfo ? <p>{userInfo.name}</p> : <NavLink to="/login" 
                     className="user-nav__login" activeClassName="link__active">Sign In</NavLink>}
                 </div>
-                {userInfo && 
+                {/* {(userInfo && userInfo.name != 'guest') &&
+                <button className='user-nav__logout' onClick={(e) => logoutHandler(e)}>Logout</button>} */}
+                {(userInfo ) &&
                 <button className='user-nav__logout' onClick={(e) => logoutHandler(e)}>Logout</button>}
             </nav>
         </header>

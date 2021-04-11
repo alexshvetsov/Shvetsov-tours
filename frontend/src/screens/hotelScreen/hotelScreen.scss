@@ -104,7 +104,8 @@ figure {
     &__content {
         font-size: 1.4rem;
         display: flex;
-        padding: 4.5rem;
+        justify-content: space-between;
+        padding: 1rem 4.5rem;
         background-color: $--color-grey-light-1;
         border-bottom: $--line;
 
@@ -112,16 +113,15 @@ figure {
             padding: 3rem;
         }
 
-        @media only screen and (max-width: $bp-small) {
+        @media only screen and (max-width: 900px) {
             flex-direction: column;
         }
 
         &-right {
             box-shadow: $--shadow-light;
             padding: 3rem;
-            flex: 0 0 60%;
-            margin-right: 4.5rem;
-
+            margin-right: 6rem;
+            height: 100%;
             @media only screen and (max-width: $bp-medium) {
                 padding: 2rem;
                 margin-right: 3rem;
@@ -134,17 +134,23 @@ figure {
         }
 
         &-left {
-            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            &-overflow {
+                height: 22%;
+                overflow-y: hidden;
+                margin-bottom: 2rem;
+                transition: all 0.3s ease;
+            }
 
             &-review {
                 background-color: #fff;
                 box-shadow: $--shadow-light;
                 padding: 3rem;
                 font-size: 1.6rem;
-                margin-bottom: 4.5rem;
+                margin-bottom: 1rem;
                 position: relative;
                 overflow: hidden;
                 display: flex;
@@ -182,6 +188,9 @@ figure {
                 background-color: transparent;
                 cursor: pointer;
                 transition: all 0.2s;
+                @media only screen and (max-width: $bp-medium) {
+                    display: none;
+                }
 
                 &:hover {
                     transform: translateY(-5px);
@@ -222,7 +231,7 @@ figure {
                     margin-bottom: 1rem;
                 }
             }
-          
+
             &-footer {
                 padding: 0 2rem;
                 display: flex;
@@ -251,7 +260,33 @@ figure {
         margin-left: 1rem;
         border-radius: 3rem;
         background-color: $--color-grey-dark-2;
-
-
     }
+}
+
+.expand-reviews {
+    height: 44%;
+    overflow-y: scroll;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #29db56 #333333;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #333333;
+    border-radius: 5rem;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #29db56;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
 }

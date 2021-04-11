@@ -13,8 +13,8 @@ export const HotelScreen = ({ match }) => {
     const hotelDetails = useSelector(state => state.hotelDetails);
     const { loading, hotel } = hotelDetails
 
-    // const userLogin = useSelector(state => state.userLogin);
-    // const { userInfo } = userLogin
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin
 
     
     const hotelReviewCreate = useSelector(state => state.hotelReviewCreate);
@@ -24,6 +24,7 @@ export const HotelScreen = ({ match }) => {
     const [rating, setRating] = useState(10)
     const [comment, setComment] = useState('')
     const [show, setShow] = useState(false)
+    const [expend, setExpend] = useState(false)
 
     useEffect(() => {
         if (successHotelReview) {
@@ -46,7 +47,7 @@ export const HotelScreen = ({ match }) => {
 
     return (
         <div className='hotel-screen'>
-{(show) && <Modal show={show} setShow={setShow} text={'only registered users can comment and only one comment per user'}/>}
+{(show) && <Modal show={show} setShow={setShow} text={`${userInfo? 'only one review for each user':'only users can review hotels'}`}/>}
             {loading ? <div className='hotel-screen__center'><Loader/></div> : <>  {hotel.images.length === 1 ?
                 <div className='hotel-screen__gallery'>
                     <figure >
@@ -102,6 +103,8 @@ export const HotelScreen = ({ match }) => {
                         </form>
                     </div>
                     <div className='hotel-screen__content-left'>
+                        <div className={`hotel-screen__content-left-overflow ${expend? 'expand-reviews':''}`}>
+
                         {hotel.reviews.map((review, index) => (
                             <div key={index} className='hotel-screen__content-left-review'>
                                 <blockquote className='hotel-screen__content-left-review-text'>
@@ -116,7 +119,23 @@ export const HotelScreen = ({ match }) => {
                                 </div>
                             </div>
                         ))}
-                        <button className="hotel-screen__content-left-btn-inline">Show all <span>&rarr;</span></button>
+                             {hotel.reviews.map((review, index) => (
+                            <div key={index} className='hotel-screen__content-left-review'>
+                                <blockquote className='hotel-screen__content-left-review-text'>
+                                    {review.comment}
+                                </blockquote>
+                                <div className='hotel-screen__content-left-review-details'>
+                                    <div className='hotel-screen__content-left-review-user'>
+                                        <h4>{review.name}</h4>
+                                        {/* <div>{review.date.toLocaleDateString("en-US")}</div> */}
+                                    </div>
+                                    <span>{review.rating}</span>
+                                </div>
+                            </div>
+                        ))}
+                        </div>
+
+                        <button onClick={()=>setExpend(!expend)} className="hotel-screen__content-left-btn-inline">{expend?'Hide':'Show all'} {expend?<span>&uarr;</span>:<span>&darr;</span>}</button>
                     </div>
                 </div>
             </>}

@@ -47,7 +47,7 @@ const Sidebar = ({ history }) => {
                         <span>Hotels</span>
                     </NavLink>
                 </li>
-                <li className={`side-nav__item ${activeLink === 'followed' ? 'side-nav__item--active' : ''}`}>
+            {  userInfo &&  <li className={`side-nav__item ${activeLink === 'followed' ? 'side-nav__item--active' : ''}`}>
                     <NavLink to="/hotels/followed" className="side-nav__link" onClick={() => {
                         if (userInfo) { setActiveLink('followed') }
                         else { setActiveLink('home') }
@@ -55,7 +55,7 @@ const Sidebar = ({ history }) => {
 
                         <span>Followed</span>
                     </NavLink>
-                </li>
+                </li>}
                 <li className={`side-nav__item ${activeLink === 'new' ? 'side-nav__item--active' : ''}`}>
                     <NavLink to="/hotels/new" className="side-nav__link" onClick={() => setActiveLink('new')}>
 

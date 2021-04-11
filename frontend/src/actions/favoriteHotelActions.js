@@ -41,8 +41,6 @@ export const createFavoriteHotelAction = (hotel) => async (dispatch, getState) =
         }
         const { data } = await axios.post(`/api/favoriteHotels`, hotel, config)
         const newFavoriteHotels= [...favoriteHotels,data]
-        console.log(data);
-        console.log(newFavoriteHotels);
         dispatch({
             type: POST_FAVORITE_HOTEL_SUCCESS,
             payload: data

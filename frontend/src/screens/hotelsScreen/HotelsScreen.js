@@ -27,7 +27,6 @@ export const HotelsScreen = ({match}) => {
     useEffect(() => {
         dispatch(listHotels(keyword, pageNumber))
         dispatch(listFavoriteHotels())
-        console.log(favoriteHotels);
     }, [dispatch,keyword, pageNumber])
 
 

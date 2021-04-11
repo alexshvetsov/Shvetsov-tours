@@ -1,5 +1,9 @@
 import mailer from 'nodemailer';
 import { Hello } from '../middleware/helloTemplate.js'
+import dotenv from 'dotenv';
+
+dotenv.config()
+
 
 const getEmailData = (to, name, template,content) => {
     let data = null;
@@ -26,18 +30,18 @@ const sendEmail = (to, name, type, content) => {
         service:'yahoo',
         secure: false,
         auth: {
-           user: 'alexsh1412@yahoo.com',
-           pass: 'dlfommyehcikgycn'
+           user: process.env.MAIL_USER,
+           pass: process.env.MAIL_PASS
         },
         debug: false,
         logger: true 
 })
-
+console.log(process.env.MAIL_USER);
+console.log(process.env.MAIL_PASS);
     const mail = getEmailData(to, name, type,content)
 
     smtpTransport.sendMail(mail, function (error, response) {
         if (error) {
-            console.log(error);
         } 
         smtpTransport.close()
     })

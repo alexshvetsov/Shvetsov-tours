@@ -17,7 +17,7 @@ const SearchBox = ({ history }) => {
         <div>
             <form action="#" className="search">
                 <input type="text" className="search__input" placeholder="Search hotels" 
-                 onChange={(e)=>setKeyword(e.target.value)}  />
+                 onChange={(e)=>{setKeyword(e.target.value); submitHandler(e) }}  />
                 <button onClick={submitHandler} className="search__button">
                     <span className="search__icon">
                         <i className='fas fa-search'></i>

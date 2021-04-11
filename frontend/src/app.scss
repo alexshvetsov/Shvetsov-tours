@@ -32,7 +32,6 @@ body {
   background-image: linear-gradient(to right bottom, $--color-primary-light, $--color-primary-dark);
   background-size: cover;
   background-repeat: no-repeat;
-  // min-height: 100vh;
   height: 100%;
   width: 100%;
 }
@@ -43,45 +42,41 @@ body {
 }
 
 .app {
-  // max-width: 120rem;
   height: 100%;
   width: 100%;
-  // margin: 8rem auto;
   background-color: $--color-grey-light-1;
   box-shadow: $--shadow-dark;
+  display: flex;
+  flex-direction: column;
 }
 @media only screen and (max-width: 900px) {
   .app {
     margin: 0;
-    min-height: fit-content;
-
     max-width: 100%;
     width: 100%;
   }
 }
 
 main {
-  // min-height: 50rem;
-  height: calc(100% - 7rem);
-
+  height: 100%;
+  // max-height: calc(100vh - 7rem);
   display: flex;
+  overflow: hidden;
   @media only screen and (max-width: $bp-medium) {
     flex-direction: column;
-    min-height: 50rem;
+    height: 100%;
+    max-height: 100%;
+  
   }
 }
-
-// .sidebar {
-//   background-color: var(--color-grey-dark-1);
-
-//   flex: 0 0 18%;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-// }
 
 .main-area {
   // flex:1 will make the item take all the row
   flex: 1;
   display: flex;
+  height: 100%;
+  @media only screen and (max-width: $bp-medium) {
+    overflow-y: scroll;
+  
+  }
 }
