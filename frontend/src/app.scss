@@ -77,6 +77,13 @@ main {
   height: 100%;
   @media only screen and (max-width: $bp-medium) {
     overflow-y: scroll;
+    &{
+      scrollbar-width: 0;
+  }
+  
+  &::-webkit-scrollbar {
+      width: 0px;
+  }
   
   }
 }

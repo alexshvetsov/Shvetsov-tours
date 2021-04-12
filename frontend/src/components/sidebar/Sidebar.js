@@ -71,7 +71,7 @@ const Sidebar = ({ history }) => {
             </ul>
 
             <div className="legal">
-                <i class="far fa-copyright"></i>  {history.location.pathname.includes('hotel/') ? `All rights reserved to Trillo 2017 and Alex Shvetsov` : ' All rights reserved to Alex Shvetsov'}
+                <i className="far fa-copyright"></i>  {history.location.pathname.includes('hotel/') ? `All rights reserved to Trillo 2017 and Alex Shvetsov` : ' All rights reserved to Alex Shvetsov'}
             </div>
         </nav>
 
