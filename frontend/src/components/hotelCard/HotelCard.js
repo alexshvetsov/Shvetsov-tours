@@ -31,12 +31,7 @@ const HotelCard = ({ hotel, index, id }) => {
     }
 
     useEffect( () => {
-        // async function fetchData() {
-        //          // You can await here
-        //          const response = await MyAPI.getData(someId);
-        //          // ...
-        //        }
-        //        fetchData();
+    
          id ? setHeartColor(true) : setHeartColor(false)
     }, [id,])
     return (
