@@ -11,7 +11,7 @@ export const listFavoriteHotels = () => async (dispatch,getState) => {
         dispatch({ type: GET_FAVORITE_HOTELS_REQUEST })
         // const { data } = await axios.get(`/api/products?keyword=${keyword}&pageNumber=${pageNumber}`)
         const { userLogin: { userInfo } } = getState()
-        
+              
         const config = {
             headers: {
                 'Content-Type': 'application/json',
